@@ -1,0 +1,199 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\GarageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: GarageRepository::class)]
+class Garage
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $garage_name = null;
+
+    #[ORM\Column]
+    private ?int $street_number = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $street = null;
+
+    #[ORM\Column]
+    private ?int $zip_code = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $country = null;
+
+    #[ORM\Column(length: 13)]
+    private ?string $phone_number = null;
+
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Vehicle::class)]
+    private Collection $vehicles;
+
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Scheldule::class, orphanRemoval: true)]
+    private Collection $scheldules;
+
+    public function __construct()
+    {
+        $this->vehicles = new ArrayCollection();
+        $this->scheldules = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getGarageName(): ?string
+    {
+        return $this->garage_name;
+    }
+
+    public function setGarageName(string $garage_name): static
+    {
+        $this->garage_name = $garage_name;
+
+        return $this;
+    }
+
+    public function getStreetNumber(): ?int
+    {
+        return $this->street_number;
+    }
+
+    public function setStreetNumber(int $street_number): static
+    {
+        $this->street_number = $street_number;
+
+        return $this;
+    }
+
+    public function getStreet(): ?string
+    {
+        return $this->street;
+    }
+
+    public function setStreet(string $street): static
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getZipCode(): ?int
+    {
+        return $this->zip_code;
+    }
+
+    public function setZipCode(int $zip_code): static
+    {
+        $this->zip_code = $zip_code;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): static
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phone_number;
+    }
+
+    public function setPhoneNumber(string $phone_number): static
+    {
+        $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vehicle>
+     */
+    public function getVehicles(): Collection
+    {
+        return $this->vehicles;
+    }
+
+    public function addVehicle(Vehicle $vehicle): static
+    {
+        if (!$this->vehicles->contains($vehicle)) {
+            $this->vehicles->add($vehicle);
+            $vehicle->setGarage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVehicle(Vehicle $vehicle): static
+    {
+        if ($this->vehicles->removeElement($vehicle)) {
+            // set the owning side to null (unless already changed)
+            if ($vehicle->getGarage() === $this) {
+                $vehicle->setGarage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Scheldule>
+     */
+    public function getScheldules(): Collection
+    {
+        return $this->scheldules;
+    }
+
+    public function addScheldule(Scheldule $scheldule): static
+    {
+        if (!$this->scheldules->contains($scheldule)) {
+            $this->scheldules->add($scheldule);
+            $scheldule->setGarage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScheldule(Scheldule $scheldule): static
+    {
+        if ($this->scheldules->removeElement($scheldule)) {
+            // set the owning side to null (unless already changed)
+            if ($scheldule->getGarage() === $this) {
+                $scheldule->setGarage(null);
+            }
+        }
+
+        return $this;
+    }
+}
