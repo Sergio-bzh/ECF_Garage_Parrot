@@ -9,18 +9,29 @@
             <h1>Garage Parrot</h1>
         </div>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <div class="d-lg-none dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+        </div>
+
+        <ul class="d-none d-lg-inline-flex nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 me-2">
             <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
             <li><a href="#" class="nav-link px-2">Features</a></li>
             <li><a href="#" class="nav-link px-2">Pricing</a></li>
             <li><a href="#" class="nav-link px-2">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
+            <li><a href="#" class="nav-link px-2 me-3">About</a></li>
         </ul>
 
-        <div class="hidden md-block d-block-md col-md-3 text-end">
+        <div class="d-none d-lg-flex justify-content-center md-block d-block-md col-md-3 text-end me-1">
             <!-- <button type="button" class="btn btn-outline-primary me-2">Se connecter</button> -->
-            <button type="button" class="btn btn-primary">Connection</button>
-            <button type="button" class="btn btn-warning">Déconnection</button>
+            <button type="button" class="btn btn-primary me-1">Connection</button>
+            <button type="button" class="btn btn-warning ms-1">Déconnection</button>
         </div>
     </header>
 </div>
