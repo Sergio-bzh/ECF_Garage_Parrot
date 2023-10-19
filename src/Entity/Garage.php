@@ -42,10 +42,18 @@ class Garage
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Scheldule::class, orphanRemoval: true)]
     private Collection $scheldules;
 
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Testimonial::class)]
+    private Collection $testimonials;
+
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Contact::class)]
+    private Collection $contacts;
+
     public function __construct()
     {
         $this->vehicles = new ArrayCollection();
         $this->scheldules = new ArrayCollection();
+        $this->testimonials = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,6 +199,66 @@ class Garage
             // set the owning side to null (unless already changed)
             if ($scheldule->getGarage() === $this) {
                 $scheldule->setGarage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Testimonial>
+     */
+    public function getTestimonials(): Collection
+    {
+        return $this->testimonials;
+    }
+
+    public function addTestimonial(Testimonial $testimonial): static
+    {
+        if (!$this->testimonials->contains($testimonial)) {
+            $this->testimonials->add($testimonial);
+            $testimonial->setGarage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTestimonial(Testimonial $testimonial): static
+    {
+        if ($this->testimonials->removeElement($testimonial)) {
+            // set the owning side to null (unless already changed)
+            if ($testimonial->getGarage() === $this) {
+                $testimonial->setGarage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): static
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->setGarage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): static
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getGarage() === $this) {
+                $contact->setGarage(null);
             }
         }
 
