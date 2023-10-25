@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
@@ -21,6 +23,14 @@ class Service
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+
+    #[ORM\ManyToMany(targetEntity: Garage::class, mappedBy: 'services')]
+    private Collection $garages;
+
+    public function __construct()
+    {
+        $this->garages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +69,33 @@ class Service
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Garage>
+     */
+    public function getGarages(): Collection
+    {
+        return $this->garages;
+    }
+
+    public function addGarage(Garage $garage): static
+    {
+        if (!$this->garages->contains($garage)) {
+            $this->garages->add($garage);
+            $garage->addService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGarage(Garage $garage): static
+    {
+        if ($this->garages->removeElement($garage)) {
+            $garage->removeService($this);
+        }
 
         return $this;
     }
