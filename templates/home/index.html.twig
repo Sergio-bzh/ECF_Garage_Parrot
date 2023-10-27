@@ -1,20 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h2>Hello {{ controller_name }}! ✅</h2>
+<div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row-reverse">
+    <div class="lg-align-self-center m-3">
+        <h2>Service d'entretien {{ controller_name }}! ✅</h2>
+        <ul>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+        </ul>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <div class="lg-align-self-center m-3">
+        <h2>Service de réparation {{ controller_name }}! ✅</h2>
+        <ul>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+            <li>Entretien de XyZ</li>
+        </ul>
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+            <li>Your template at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+        </ul>
+    </div>
+
 </div>
 {% endblock %}

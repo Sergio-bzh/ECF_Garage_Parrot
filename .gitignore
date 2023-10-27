@@ -57,3 +57,6 @@ A_Lire.md
 /lts_5.4/
 .env
 .env.local
+
+## Problèmes lors des migrations des tables !
+/migragions_FAILS/
