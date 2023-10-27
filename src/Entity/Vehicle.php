@@ -38,9 +38,13 @@ class Vehicle
     #[ORM\OneToMany(mappedBy: 'vehicle', targetEntity: Image::class, orphanRemoval: true)]
     private Collection $images;
 
+    #[ORM\ManyToMany(targetEntity: Option::class, inversedBy: 'vehicles')]
+    private Collection $options;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->options = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +150,30 @@ class Vehicle
                 $image->setVehicle(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Option>
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Option $option): static
+    {
+        if (!$this->options->contains($option)) {
+            $this->options->add($option);
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Option $option): static
+    {
+        $this->options->removeElement($option);
 
         return $this;
     }

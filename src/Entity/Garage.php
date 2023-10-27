@@ -48,12 +48,20 @@ class Garage
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Contact::class)]
     private Collection $contacts;
 
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Employee::class)]
+    private Collection $employees;
+
+    #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'garages')]
+    private Collection $services;
+
     public function __construct()
     {
         $this->vehicles = new ArrayCollection();
         $this->scheldules = new ArrayCollection();
         $this->testimonials = new ArrayCollection();
         $this->contacts = new ArrayCollection();
+        $this->employees = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -261,6 +269,60 @@ class Garage
                 $contact->setGarage(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employee>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employee $employee): static
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->setGarage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employee $employee): static
+    {
+        if ($this->employees->removeElement($employee)) {
+            // set the owning side to null (unless already changed)
+            if ($employee->getGarage() === $this) {
+                $employee->setGarage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): static
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): static
+    {
+        $this->services->removeElement($service);
 
         return $this;
     }
