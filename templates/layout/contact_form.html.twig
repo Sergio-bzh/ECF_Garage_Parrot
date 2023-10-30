@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de contact{% endblock %}
+
+{% block body %}
+    <form class="col col-10 mx-auto">
+        <div class="mb-3">
+            <label for="contactSurname" class="form-label">Nom</label>
+            <input type="text" name="contactSurname" class="form-control" id="contactSurname" aria-describedby="textHelp" placeholder="Ici votre nom">
+        </div>
+
+        <div class="mb-3">
+            <label for="contactName" class="form-label">Prénom</label>
+            <input type="text" name="contactName" class="form-control" id="contactName" aria-describedby="textHelp" placeholder="Ici votre prénom">
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Téléhone</label>
+            <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" aria-describedby="textHelp" placeholder="Ici votre numéro de téléphone">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactContent" class="form-label">Commentaire</label>
+            <textarea class="form-control" id="contactContent"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
