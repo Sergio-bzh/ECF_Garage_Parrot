@@ -326,4 +326,9 @@ class Garage
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->getGarageName();
+    }
 }

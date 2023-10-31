@@ -2,6 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Employee;
+use App\Entity\Garage;
+use App\Entity\Scheldule;
+use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -42,6 +46,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-dashboard');
+        yield MenuItem::linkToCrud('Garage', 'fas fa-home', Garage::class);
+        yield MenuItem::linkToCrud('Horaires', 'fas fa-circle', Scheldule::class);
+        yield MenuItem::linkToCrud('Employés', 'fas fa-user', Employee::class);
+        yield MenuItem::linkToCrud('Service', 'fas fa-list', Service::class);
+        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
