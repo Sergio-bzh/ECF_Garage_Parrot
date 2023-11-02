@@ -9,7 +9,7 @@ use App\Entity\Garage;
 use App\Entity\Image;
 use App\Entity\Option;
 use App\Entity\Model;
-use App\Entity\Scheldule;
+use App\Entity\Schedule;
 use App\Entity\Service;
 use App\Entity\Testimonial;
 use App\Entity\Vehicle;
@@ -54,7 +54,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-dashboard');
         yield MenuItem::linkToCrud('Garage', 'fas fa-home', Garage::class);
-        yield MenuItem::linkToCrud('Horaires', 'fas fa-circle', Scheldule::class);
+        yield MenuItem::linkToCrud('Horaires', 'fas fa-circle', Schedule::class);
         yield MenuItem::linkToCrud('Employés', 'fas fa-user', Employee::class);
         yield MenuItem::linkToCrud('Services', 'fas fa-list', Service::class);
         yield MenuItem::linkToCrud('Marques', 'fas fa-list', Brand::class);

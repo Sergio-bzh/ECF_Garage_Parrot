@@ -23,7 +23,7 @@ class Vehicle
     private ?string $price = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $desription = null;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $registration_date = null;
@@ -79,14 +79,14 @@ class Vehicle
         return $this;
     }
 
-    public function getDesription(): ?string
+    public function getDescription(): ?string
     {
-        return $this->desription;
+        return $this->description;
     }
 
-    public function setDesription(string $desription): static
+    public function setDescription(string $description): static
     {
-        $this->desription = $desription;
+        $this->description = $description;
 
         return $this;
     }

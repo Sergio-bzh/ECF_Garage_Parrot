@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Scheldule;
+use App\Entity\Schedule;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -13,7 +13,7 @@ class SchelduleCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Scheldule::class;
+        return Schedule::class;
     }
 
 

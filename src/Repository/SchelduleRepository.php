@@ -2,23 +2,23 @@
 
 namespace App\Repository;
 
-use App\Entity\Scheldule;
+use App\Entity\Schedule;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Scheldule>
+ * @extends ServiceEntityRepository<Schedule>
  *
- * @method Scheldule|null find($id, $lockMode = null, $lockVersion = null)
- * @method Scheldule|null findOneBy(array $criteria, array $orderBy = null)
- * @method Scheldule[]    findAll()
- * @method Scheldule[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Schedule|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Schedule|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Schedule[]    findAll()
+ * @method Schedule[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class SchelduleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Scheldule::class);
+        parent::__construct($registry, Schedule::class);
     }
 
 //    /**

@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SchelduleRepository::class)]
-class Scheldule
+class Schedule
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
