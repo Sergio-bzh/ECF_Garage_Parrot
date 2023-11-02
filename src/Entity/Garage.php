@@ -39,7 +39,7 @@ class Garage
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Vehicle::class)]
     private Collection $vehicles;
 
-    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Scheldule::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Schedule::class, orphanRemoval: true)]
     private Collection $scheldules;
 
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Testimonial::class)]
@@ -184,14 +184,14 @@ class Garage
     }
 
     /**
-     * @return Collection<int, Scheldule>
+     * @return Collection<int, Schedule>
      */
     public function getScheldules(): Collection
     {
         return $this->scheldules;
     }
 
-    public function addScheldule(Scheldule $scheldule): static
+    public function addScheldule(Schedule $scheldule): static
     {
         if (!$this->scheldules->contains($scheldule)) {
             $this->scheldules->add($scheldule);
@@ -201,7 +201,7 @@ class Garage
         return $this;
     }
 
-    public function removeScheldule(Scheldule $scheldule): static
+    public function removeScheldule(Schedule $scheldule): static
     {
         if ($this->scheldules->removeElement($scheldule)) {
             // set the owning side to null (unless already changed)
@@ -325,5 +325,10 @@ class Garage
         $this->services->removeElement($service);
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getGarageName();
     }
 }

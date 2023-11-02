@@ -23,7 +23,7 @@ class Vehicle
     private ?string $price = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $desription = null;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $registration_date = null;
@@ -40,6 +40,9 @@ class Vehicle
 
     #[ORM\ManyToMany(targetEntity: Option::class, inversedBy: 'vehicles')]
     private Collection $options;
+
+    #[ORM\Column(length: 50)]
+    private ?string $vehicle_name = null;
 
     public function __construct()
     {
@@ -76,14 +79,14 @@ class Vehicle
         return $this;
     }
 
-    public function getDesription(): ?string
+    public function getDescription(): ?string
     {
-        return $this->desription;
+        return $this->description;
     }
 
-    public function setDesription(string $desription): static
+    public function setDescription(string $description): static
     {
-        $this->desription = $desription;
+        $this->description = $description;
 
         return $this;
     }
@@ -174,6 +177,18 @@ class Vehicle
     public function removeOption(Option $option): static
     {
         $this->options->removeElement($option);
+
+        return $this;
+    }
+
+    public function getVehicleName(): ?string
+    {
+        return $this->vehicle_name;
+    }
+
+    public function setVehicleName(string $vehicle_name): static
+    {
+        $this->vehicle_name = $vehicle_name;
 
         return $this;
     }
