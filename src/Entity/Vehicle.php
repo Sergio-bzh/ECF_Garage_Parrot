@@ -41,6 +41,9 @@ class Vehicle
     #[ORM\ManyToMany(targetEntity: Option::class, inversedBy: 'vehicles')]
     private Collection $options;
 
+    #[ORM\Column(length: 50)]
+    private ?string $vehicle_name = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -174,6 +177,18 @@ class Vehicle
     public function removeOption(Option $option): static
     {
         $this->options->removeElement($option);
+
+        return $this;
+    }
+
+    public function getVehicleName(): ?string
+    {
+        return $this->vehicle_name;
+    }
+
+    public function setVehicleName(string $vehicle_name): static
+    {
+        $this->vehicle_name = $vehicle_name;
 
         return $this;
     }
