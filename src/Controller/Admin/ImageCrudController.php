@@ -17,17 +17,17 @@ class ImageCrudController extends AbstractCrudController
     }
 
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         yield from parent::configureFields($pageName);
-        yield AssociationField::new('vehicle.id');
+        yield TextField::new('vehicle');
         /*
         return [
             IdField::new('id'),
             TextField::new('title'),
             TextEditorField::new('description'),
-        ];
+        ];*/
     }
-    */
+
 }
