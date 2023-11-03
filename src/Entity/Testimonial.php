@@ -26,6 +26,9 @@ class Testimonial
     #[ORM\ManyToOne(inversedBy: 'testimonials')]
     private ?Garage $garage = null;
 
+    #[ORM\Column]
+    private ?bool $is_approved = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Testimonial
     public function setGarage(?Garage $garage): static
     {
         $this->garage = $garage;
+
+        return $this;
+    }
+
+    public function isIsApproved(): ?bool
+    {
+        return $this->is_approved;
+    }
+
+    public function setIsApproved(bool $is_approved): static
+    {
+        $this->is_approved = $is_approved;
 
         return $this;
     }
