@@ -23,6 +23,7 @@ class VehicleCrudController extends AbstractCrudController
         yield AssociationField::new('model');
         yield AssociationField::new('garage');
         yield AssociationField::new('options');
+        yield AssociationField::new('images');
         /*
         return [
             IdField::new('id'),

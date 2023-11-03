@@ -4,9 +4,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -15,14 +20,14 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+//        yield from parent::configureFields(($pageName));
+        yield NumberField::new('id')
+            ->hideOnForm();
+        yield TextField::new('label');
+        yield TextField::new('type');
+        yield TextField::new('description');
+        yield AssociationField::new('garages');
     }
-    */
 }
