@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\SchelduleRepository;
+use App\Repository\ScheduleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: SchelduleRepository::class)]
+#[ORM\Entity(repositoryClass: ScheduleRepository::class)]
 class Schedule
 {
     #[ORM\Id]
@@ -26,7 +26,7 @@ class Schedule
     #[ORM\Column(length: 50)]
     private ?string $schedule_type = null;
 
-    #[ORM\ManyToOne(inversedBy: 'scheldules')]
+    #[ORM\ManyToOne(inversedBy: 'schedules')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Garage $garage = null;
 

@@ -33,14 +33,14 @@ class Garage
     #[ORM\Column(length: 50)]
     private ?string $country = null;
 
-    #[ORM\Column(length: 13)]
+    #[ORM\Column(length: 14)]
     private ?string $phone_number = null;
 
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Vehicle::class)]
     private Collection $vehicles;
 
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Schedule::class, orphanRemoval: true)]
-    private Collection $scheldules;
+    private Collection $schedules;
 
     #[ORM\OneToMany(mappedBy: 'garage', targetEntity: Testimonial::class)]
     private Collection $testimonials;
@@ -57,7 +57,7 @@ class Garage
     public function __construct()
     {
         $this->vehicles = new ArrayCollection();
-        $this->scheldules = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
         $this->testimonials = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->employees = new ArrayCollection();
@@ -186,27 +186,27 @@ class Garage
     /**
      * @return Collection<int, Schedule>
      */
-    public function getScheldules(): Collection
+    public function getSchedules(): Collection
     {
-        return $this->scheldules;
+        return $this->schedules;
     }
 
-    public function addScheldule(Schedule $scheldule): static
+    public function addSchedule(Schedule $schedule): static
     {
-        if (!$this->scheldules->contains($scheldule)) {
-            $this->scheldules->add($scheldule);
-            $scheldule->setGarage($this);
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules->add($schedule);
+            $schedule->setGarage($this);
         }
 
         return $this;
     }
 
-    public function removeScheldule(Schedule $scheldule): static
+    public function removeSchedule(Schedule $schedule): static
     {
-        if ($this->scheldules->removeElement($scheldule)) {
+        if ($this->schedules->removeElement($schedule)) {
             // set the owning side to null (unless already changed)
-            if ($scheldule->getGarage() === $this) {
-                $scheldule->setGarage(null);
+            if ($schedule->getGarage() === $this) {
+                $schedule->setGarage(null);
             }
         }
 
