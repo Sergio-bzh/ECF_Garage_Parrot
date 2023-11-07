@@ -5,13 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Testimonial;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TestimonialCrudController extends AbstractCrudController
 {
@@ -20,17 +19,23 @@ class TestimonialCrudController extends AbstractCrudController
         return Testimonial::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
 //        yield from parent::configureFields($pageName);
-        yield NumberField::new('id')
+        yield IdField::new('id')
             ->hideOnForm();
-        yield TextField::new('user_name');
-        yield TextareaField::new('content');
-        yield NumberField::new('score');
-        yield Field::new('is_approved');
-        yield AssociationField::new('garage');
+        yield TextField::new('user_name', 'Nom');
+        yield TextareaField::new('content', 'Contenu');
+//        yield NumberField::new('score', 'Note');
+        yield ChoiceField::new('score', 'Note')->setChoices([
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5'
+        ])->renderExpanded();
+        yield Field::new('is_approved', 'Validé');
+        yield AssociationField::new('garage', 'Selectionnez le garage');
 
         /*
         return [
