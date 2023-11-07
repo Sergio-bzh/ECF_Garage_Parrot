@@ -9,13 +9,9 @@
         <div>
             <h2>Horaires</h2>
             <ul class="list-unstyled">
-                <li>Lundi</li>
-                <li>Mardi</li>
-                <li>Mercredi</li>
-                <li>Jeudi</li>
-                <li>Vendredi</li>
-                <li>Samedi</li>
-                <li class="fs-3">Fermé le dimanche</li>
+                {% for schedule in displaySchedules %}
+                    <li>{{ schedule }}</li>
+                {% endfor %}
             </ul>
         </div>
 
