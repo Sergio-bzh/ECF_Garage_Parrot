@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\ScheduleService;
+use App\Service\TestimonialService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,11 +16,12 @@ class HomeController extends AbstractController
         Route('/home', name: 'app_home_alt'),
         Route('/accueil', name: 'app_accueil')
     ]
-    public function index(ScheduleService $displaySchedules): Response
+    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'displaySchedules' => $displaySchedules->getDisplaySchedules()
+            'displaySchedules' => $displaySchedules->getDisplaySchedules(),
+            'testimonials' => $testimonialService->getTestimonials()
         ]);
     }
 
@@ -28,16 +30,17 @@ class HomeController extends AbstractController
     {
         return $this->render('layout/vehicles.html.twig', [
            'controller_name' => 'HomeController',
-            'displaySchedules' => $displaySchedules->getDisplaySchedules()
+            'displaySchedules' => $displaySchedules->getDisplaySchedules(),
         ]);
     }
 
     #[Route('/commentaires', name: 'app_comments')]
-    public function comments(ScheduleService $displaySchedules):Response
+    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService):Response
     {
         return $this->render('layout/comments.html.twig', [
             'controller_name' => 'HomeController',
-            'displaySchedules' => $displaySchedules->getDisplaySchedules()
+            'displaySchedules' => $displaySchedules->getDisplaySchedules(),
+            'testimonials' => $testimonialService->getTestimonials()
         ]);
     }
 

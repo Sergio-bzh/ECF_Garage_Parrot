@@ -56,26 +56,18 @@
 
 </div>
     <h2 class="text-center">Commentaires et témoignages</h2>
-    <div class="d-flex justify-content-evenly">
+    <div class="d-flex flex-column-reverse justify-content-evenly">
 
         <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
-
-            <div class="text-center">
-                <h3>Témoignage 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aut autem deserunt dolore est laboriosam neque perspiciatis provident, quam tempora, unde voluptas! Cum explicabo hic obcaecati recusandae reiciendis totam.</p>
-                <span>&star;&star;&star;&star;&star;</span>
-            </div>
-            <div class="text-center">
-                <h3>Témoignage 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aut autem deserunt dolore est laboriosam neque perspiciatis provident, quam tempora, unde voluptas! Cum explicabo hic obcaecati recusandae reiciendis totam.</p>
-                <span>&star;&star;&star;&star;&star;</span>
-            </div>
-            <div class="text-center">
-                <h3>Témoignage 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aut autem deserunt dolore est laboriosam neque perspiciatis provident, quam tempora, unde voluptas! Cum explicabo hic obcaecati recusandae reiciendis totam.</p>
-                <span>&star;&star;&star;&star;&star;</span>
-            </div>
-
+        {% for testimonial in testimonials %}
+            <div class="col col-12 mx-1 col-lg-2 mx-3">
+                <ul class="list-unstyled">
+                    <li><label>Nom: </label>{{ testimonial.Nom }}</li>
+                    <li><label>Contenu: </label><span>{{ testimonial.Contenu }}</span></li>
+                    <li><label>Note: </label>{{ testimonial.Note }}</li>
+                </ul>
+            </div> <br>
+        {% endfor %}
         </div>
 
         <div class="align-self-center text-end me-3 text-lg-end">
