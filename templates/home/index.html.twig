@@ -4,67 +4,30 @@
 
 {% block body %}
 
+<h2 class="text-center">Services proposés par le garage</h2>
 <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row-reverse">
-    <div class="lg-align-self-center m-3">
-        <h2>Service d'entretien {{ controller_name }}! ✅</h2>
-        <ul>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-        </ul>
-    </div>
 
-    <div class="lg-align-self-center m-3">
-        <h2>Service de réparation {{ controller_name }}! ✅</h2>
-        <ul>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-            <li>Entretien de XyZ</li>
-        </ul>
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-        </ul>
-    </div>
+    {% for service in services %}
+        <div class="lg-align-self-center m-3">
+            <h3>{{ service.Appelation }}</h3>
+            <p><label>Type de service : {{ service.Type }}</label></p>
+            <p>{{ service.Description }}</p>
+
+        </div>
+    {% endfor %}
 
 </div>
-    <h2 class="text-center">Commentaires et témoignages</h2>
-    <div class="d-flex flex-column-reverse justify-content-evenly">
+
+<h2 class="text-center">Commentaires et témoignages</h2>
+<div class="d-flex flex-column-reverse justify-content-evenly">
 
         <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
         {% for testimonial in testimonials %}
             <div class="col col-12 mx-1 col-lg-2 mx-3">
                 <ul class="list-unstyled">
-                    <li><label>Nom: </label>{{ testimonial.Nom }}</li>
-                    <li><label>Contenu: </label><span>{{ testimonial.Contenu }}</span></li>
-                    <li><label>Note: </label>{{ testimonial.Note }}</li>
+                    <li><label>Nom: {{ testimonial.Nom }} </label></li>
+                    <li><label>Contenu: {{ testimonial.Contenu }} </label></li>
+                    <li><label>Note: {{ testimonial.Note }} </label></li>
                 </ul>
             </div> <br>
         {% endfor %}
