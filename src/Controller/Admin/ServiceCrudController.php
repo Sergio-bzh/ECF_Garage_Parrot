@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -27,7 +28,7 @@ class ServiceCrudController extends AbstractCrudController
             ->hideOnForm();
         yield TextField::new('label');
         yield TextField::new('type');
-        yield TextField::new('description');
+        yield TextareaField::new('description');
         yield AssociationField::new('garages');
     }
 }

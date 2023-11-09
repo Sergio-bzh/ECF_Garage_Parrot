@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\ScheduleService;
+use App\Service\ServicesService;
 use App\Service\TestimonialService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +17,13 @@ class HomeController extends AbstractController
         Route('/home', name: 'app_home_alt'),
         Route('/accueil', name: 'app_accueil')
     ]
-    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService): Response
+    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService, ServicesService $servicesService): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials()
+            'testimonials' => $testimonialService->getTestimonials(),
+            'services' => $servicesService->getServices()
         ]);
     }
 
@@ -40,7 +42,7 @@ class HomeController extends AbstractController
         return $this->render('layout/comments.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials()
+            'testimonials' => $testimonialService->getTestimonials(),
         ]);
     }
 

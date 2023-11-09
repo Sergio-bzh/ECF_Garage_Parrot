@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
@@ -21,7 +22,7 @@ class Service
     #[ORM\Column(length: 50)]
     private ?string $type = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Garage::class, mappedBy: 'services')]
