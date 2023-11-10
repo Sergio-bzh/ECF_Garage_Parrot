@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\TestimonialRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: TestimonialRepository::class)]
 class Testimonial
@@ -15,12 +17,21 @@ class Testimonial
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'Le nom doit comporter au moins {{ limit }} caractères',
+        maxMessage: 'Le nom ne doit pas dépaser {{ limit }} caratères')]
     private ?string $user_name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 15, minMessage: 'Minimum {{ limit }} caractères')]
     private ?string $content = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?int $score = null;
 
     #[ORM\ManyToOne(inversedBy: 'testimonials')]
