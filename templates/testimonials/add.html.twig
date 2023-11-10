@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestimonialsController!{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        <div class="col col-10 mx-auto">
+            {{ form_start(commentForm) }}
+                {{ form_label(commentForm.user_name) }}
+                {{ form_widget(commentForm.user_name) }}
+
+                {{ form_label(commentForm.content) }}
+                {{ form_widget(commentForm.content) }}
+
+                {{ form_label(commentForm.score) }}
+                {{ form_widget(commentForm.score) }}
+
+                {{ form_rest(commentForm) }}
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            {{ form_end(commentForm) }}
+        </div>
+
+    </main>
+
+{% endblock %}

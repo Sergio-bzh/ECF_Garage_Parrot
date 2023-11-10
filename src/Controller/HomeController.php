@@ -36,6 +36,8 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+    /*
     #[Route('/commentaires', name: 'app_comments')]
     public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService):Response
     {
@@ -46,6 +48,7 @@ class HomeController extends AbstractController
         ]);
     }
 
+
     #[Route('/form_commentaires', name: 'app_comments_form')]
     public function leaveComment(ScheduleService $displaySchedules):Response
     {
@@ -54,6 +57,9 @@ class HomeController extends AbstractController
             'displaySchedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
+
+    */
+
 
     #[Route('/contact', name: 'app_contact')]
     public function contactRequest(ScheduleService $displaySchedules): Response

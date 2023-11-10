@@ -26,7 +26,7 @@ class Testimonial
     #[ORM\ManyToOne(inversedBy: 'testimonials')]
     private ?Garage $garage = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $is_approved = null;
 
     public function getId(): ?int
