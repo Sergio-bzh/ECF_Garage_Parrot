@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestimonialsController!{% endblock %}
+
+{% block body %}
+    <h2 class="text-center">Service de réparation {{ controller_name }}! ✅</h2>
+    <h2 class="text-center">Commentaires et témoignages</h2>
+    <div class="text-end me-3 text-lg-start">
+        <a href="{{ path('app_comments_form') }}"><button class="btn btn-primary">Laisser un témoignage</button></a>
+    </div>
+    <div class="d-flex flex-column-reverse justify-content-evenly">
+
+        <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
+            {% for testimonial in testimonials %}
+                <div class="col col-12 mx-1 col-lg-2 mx-3">
+                    <ul class="list-unstyled">
+                        <li><label>Nom : {{ testimonial.Nom }} </label></li>
+                        <li><label>Contenu : {{ testimonial.Contenu }} </label></li>
+                        {#                     <li><label>Note: {{ testimonial.Note }} </label></li>  #}
+
+                        <li>Note :
+                            {% for i in range(1, 5) %}
+                                {% if (loop.index <= testimonial.Note) %}
+                                    <span class="active text-secondary">&starf;</span>
+                                {% else %}
+                                    <span class="active"> </span>
+                                {% endif %}
+                            {% endfor %}
+                        </li>
+
+                    </ul>
+                </div> <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
