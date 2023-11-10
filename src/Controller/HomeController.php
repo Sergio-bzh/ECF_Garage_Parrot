@@ -47,7 +47,7 @@ class HomeController extends AbstractController
             'testimonials' => $testimonialService->getTestimonials(),
         ]);
     }
-    */
+
 
     #[Route('/form_commentaires', name: 'app_comments_form')]
     public function leaveComment(ScheduleService $displaySchedules):Response
@@ -57,6 +57,9 @@ class HomeController extends AbstractController
             'displaySchedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
+
+    */
+
 
     #[Route('/contact', name: 'app_contact')]
     public function contactRequest(ScheduleService $displaySchedules): Response
