@@ -58,8 +58,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    */
-
 
     #[Route('/contact', name: 'app_contact')]
     public function contactRequest(ScheduleService $displaySchedules): Response
@@ -69,6 +67,7 @@ class HomeController extends AbstractController
             'displaySchedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
+    */
 
     #[Route('/connexion', name: 'app_connection')]
     public function connection(ScheduleService $displaySchedules): Response
