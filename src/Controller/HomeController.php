@@ -27,6 +27,8 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /*
+
     #[ROUTE('/vehicules', name: 'app_vehicles_list')]
     public function vehicles(ScheduleService $displaySchedules):Response
     {
@@ -37,7 +39,6 @@ class HomeController extends AbstractController
     }
 
 
-    /*
     #[Route('/commentaires', name: 'app_comments')]
     public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService):Response
     {

@@ -25,8 +25,9 @@ class ScheduleService
 
         foreach ($extractedSchedules as $schedule) {
             $bddDayOfWeek = $schedule->getDayOfWeek();
-            //$index variable keeps the indexNumber of array $this->daysOfWeek where the value coming from database was found and this index
-            // will be used to initialize both $morning and $afternoon arrays
+
+/*          The $index variable keeps the indexNumber from array "$this->daysOfWeek" where the value coming from database was found
+            after comparision in "array_search" function and this index is used to initialize both "$morning" and "$afternoon" arrays */
             $index = array_search($bddDayOfWeek, $this->daysOfWeek);
             if ($schedule->getScheduleType() === 'Matin') {
                 $morning[$index] = $schedule->getStartTime()->format('H:i') . '/' . $schedule->getEndTime()->format('H:i');
