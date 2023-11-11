@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -15,15 +16,25 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
     private ?string $last_name = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
     private ?string $first_name = null;
 
     #[ORM\Column(length: 75)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $email = null;
 
     #[ORM\Column(length: 14)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 10,
+        max: 14,
+        minMessage: 'Mobile ou fixe avec au moins {{ limit }}',
+        maxMessage: 'Maximum {{ limit }}')]
     private ?string $phone_number = null;
 
     #[ORM\Column(type: Types::TEXT)]

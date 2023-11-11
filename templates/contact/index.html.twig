@@ -17,23 +17,33 @@
         <li>Your template at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
     </ul>
 </div>
-{#    <main>
+    <main>
 
         <div class="col col-10 mx-auto">
             {{ form_start(contactForm) }}
-            {{ form_label(contactForm.user_name) }}
-            {{ form_widget(contactForm.user_name) }}
 
-            {{ form_label(contactForm.content) }}
-            {{ form_widget(contactForm.content) }}
+            {{ form_label(contactForm.last_name) }}
+            {{ form_widget(contactForm.last_name) }}            {{ form_label(contactForm.last_name) }}
 
-            {{ form_label(contactForm.score) }}
-            {{ form_widget(contactForm.score) }}
+            {{ form_label(contactForm.first_name) }}
+            {{ form_widget(contactForm.first_name) }}
+
+            {{ form_label(contactForm.email) }}
+            {{ form_widget(contactForm.email) }}
+
+            {{ form_label(contactForm.phone_number) }}
+            {{ form_widget(contactForm.phone_number) }}
+
+            {{ form_label(contactForm.message) }}
+            {{ form_widget(contactForm.message) }}
+
+            {{ form_label(contactForm.garage) }}
+            {{ form_widget(contactForm.garage) }}
 
             {{ form_rest(contactForm) }}
             <button class="btn btn-primary" type="submit">Enregistrer</button>
             {{ form_end(contactForm) }}
         </div>
 
-#}    </main>
+   </main>
 {% endblock %}
