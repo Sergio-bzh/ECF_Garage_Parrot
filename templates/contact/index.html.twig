@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
 <style>
@@ -23,7 +23,7 @@
             {{ form_start(contactForm) }}
 
             {{ form_label(contactForm.last_name) }}
-            {{ form_widget(contactForm.last_name) }}            {{ form_label(contactForm.last_name) }}
+            {{ form_widget(contactForm.last_name) }}
 
             {{ form_label(contactForm.first_name) }}
             {{ form_widget(contactForm.first_name) }}
