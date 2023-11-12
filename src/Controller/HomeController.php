@@ -13,9 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[
-        Route('/', name: 'app_home'),
-        Route('/home', name: 'app_home_alt'),
-        Route('/accueil', name: 'app_accueil')
+        Route('/', name: 'app_home', methods: 'GET'),
+        Route('/home', name: 'app_home_alt', methods: 'GET'),
+        Route('/accueil', name: 'app_accueil', methods: 'GET')
     ]
     public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService, ServicesService $servicesService): Response
     {
