@@ -60,8 +60,12 @@ class TestimonialsController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
+            // J'ajoute un message flash de confirmation pour le client
+            $this->addFlash('success', 'Votre commentaire a bien été soumis et sera affiché après traitement par nos modérateurs');
+
             // Je redigige vers la page d'accueil
             return $this->redirectToRoute('app_home');
+
         }
 
         return $this->render('testimonials/add.html.twig', [
