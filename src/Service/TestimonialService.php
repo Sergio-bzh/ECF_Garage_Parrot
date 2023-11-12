@@ -26,7 +26,7 @@ class TestimonialService
         $extractedTestimonials = $testimonialsRepo->findBy([], ['score' => 'DESC']);
         $testimonialList = [];
 
-        $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 4 );
+        $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 3, 4 );
         $limitedList = array();
 
 //      Génération de tous les temoignages

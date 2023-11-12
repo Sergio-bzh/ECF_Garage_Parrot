@@ -9,7 +9,7 @@
         <h2 class="text-center">{{ controller_name }}! ✅</h2>
         <h2 class="text-center">Laissez un commentaire</h2>
 
-        <div class="col col-10 mx-auto">
+        <div class="col col-10 col-lg-6 mx-auto">
             {{ form_start(commentForm) }}
                 {{ form_label(commentForm.user_name) }}
                 {{ form_widget(commentForm.user_name) }}
@@ -21,7 +21,9 @@
                 {{ form_widget(commentForm.score) }}
 
                 {{ form_rest(commentForm) }}
-                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit">Enregistrer</button>
+                </div>
             {{ form_end(commentForm) }}
         </div>
 

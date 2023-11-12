@@ -20,7 +20,7 @@
 </div>
     <main>
 
-        <div class="col col-10 mx-auto">
+        <div class="col col-10 mx-auto col-lg-6">
             {{ form_start(contactForm) }}
 
             {{ form_label(contactForm.last_name) }}
@@ -42,7 +42,9 @@
             {{ form_widget(contactForm.garage) }}
 
             {{ form_rest(contactForm) }}
-            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </div>
             {{ form_end(contactForm) }}
         </div>
 
