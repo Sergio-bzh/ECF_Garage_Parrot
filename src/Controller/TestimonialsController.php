@@ -15,8 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestimonialsController extends AbstractController
 {
     #[
-        Route('/testimonials', name: 'app_testimonials'),
-        Route('/commentaires', name: 'app_comments')
+        Route('/testimonials', name: 'app_testimonials', methods: 'GET'),
+        Route('/commentaires', name: 'app_comments', methods: 'GET')
     ]
     public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService): Response
     {
@@ -38,9 +38,9 @@ class TestimonialsController extends AbstractController
     }
 */
     #[
-        Route('/add_testimonial', name:'app_add_testimonial'),
-        Route('/ajouter_temoignage', name:'app_add_temoignage'),
-        Route('/ajouter_commentaire', name:'app_add_comment')
+        Route('/add_testimonial', name:'app_add_testimonial', methods: 'GET|POST'),
+        Route('/ajouter_temoignage', name:'app_add_temoignage', methods: 'GET|POST'),
+        Route('/ajouter_commentaire', name:'app_add_comment', methods: 'GET|POST')
     ]
     public function add_testimonial(ScheduleService $displaySchedules,Request $request, EntityManagerInterface $entityManager):Response
     {
@@ -60,8 +60,12 @@ class TestimonialsController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
+            // J'ajoute un message flash de confirmation pour le client
+            $this->addFlash('success', 'Votre commentaire a bien été soumis et sera affiché après traitement par nos modérateurs');
+
             // Je redigige vers la page d'accueil
             return $this->redirectToRoute('app_home');
+
         }
 
         return $this->render('testimonials/add.html.twig', [

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VehicleController extends AbstractController
 {
-    #[Route('/vehicles', name: 'app_vehicles_list')]
+    #[Route('/vehicles', name: 'app_vehicles_list', methods: 'GET')]
     public function index(ScheduleService $scheduleService, VehicleRepository $vehicleRepository): Response
     {
         $vehicle_list = $vehicleRepository->findAll();
@@ -26,7 +26,7 @@ class VehicleController extends AbstractController
 
 
 
-    #[Route('/vehicles/{id<[0-9]+>}', name: 'app_show_vehicle')]
+    #[Route('/vehicles/{id<[0-9]+>}', name: 'app_show_vehicle', methods: 'GET')]
     public function show_vehicle(ScheduleService $scheduleService, Vehicle $vehicle): Response
     {
         return $this->render('vehicle/show_vehicle.html.twig', [

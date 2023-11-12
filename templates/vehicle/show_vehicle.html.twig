@@ -5,6 +5,7 @@
 {% block body %}
 
 <main class="d-flex flex-column align-items-center">
+    {# SUPPRIMER LIGNE ci-dessous #}
     <h2 class="text-center">{{ controller_name }}! ✅</h2>
 
     <div  class="col col-12 mx-1 col-lg-2 mx-3">
@@ -23,12 +24,34 @@
         </article>
     </div>
 
-    <div class="gallerie-images d-flex">
-        <div class="ms-3"><img src="#" alt="image1"></div>
-        <div class="ms-3"><img src="#" alt="image2"></div>
-        <div class="ms-3"><img src="#" alt="image3"></div>
-        <div class="ms-3"><img src="#" alt="image4"></div>
-        <div class="ms-3"><img src="#" alt="image5"></div>
+    <div class="gallerie-images">
+        <ul class="list-unstyled  d-flex">
+{#            //Pour Affichage des images qu'il faudra intégrer dans l'action show du contrôleur "VehicleController"
+            {% for image in images %}
+                <li>
+                    <div class="ms-3">
+                        <a href="#Route images du véhicule"><img src="#" alt="image1">{{ vehicle.images({% image.title %}) }}</a>
+                    </div>
+                </li>
+            {% endfor %}
+#}
+            <li>
+                <div class="ms-3"><img src="#" alt="image1"></div>
+            </li>
+            <li>
+                <div class="ms-3"><img src="#" alt="image2"></div>
+            </li>
+            <li>
+                <div class="ms-3"><img src="#" alt="image3"></div>
+            </li>
+            <li>
+                <div class="ms-3"><img src="#" alt="image4"></div>
+            </li>
+            <li>
+                <div class="ms-3"><img src="#" alt="image5"></div>
+            </li>
+
+        </ul>
 
     </div>
 

@@ -33,7 +33,7 @@ class ContactFormType extends AbstractType
                 'label' => 'Courriel',
                 'required' => true,
                 'mapped' => true])
-            ->add('phone_number', TextareaType::class,[
+            ->add('phone_number', TextType::class,[
                 'attr' => ['class' => 'form-control mb-3'],
                 'label' => 'Téléphone',
                 'required' => true,

@@ -13,16 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[
-        Route('/', name: 'app_home'),
-        Route('/home', name: 'app_home_alt'),
-        Route('/accueil', name: 'app_accueil')
+        Route('/', name: 'app_home', methods: 'GET'),
+        Route('/home', name: 'app_home_alt', methods: 'GET'),
+        Route('/accueil', name: 'app_accueil', methods: 'GET')
     ]
     public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService, ServicesService $servicesService): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials(),
+            'testimonials' => $testimonialService->getLimitedTestimonials(),
             'services' => $servicesService->getServices()
         ]);
     }
