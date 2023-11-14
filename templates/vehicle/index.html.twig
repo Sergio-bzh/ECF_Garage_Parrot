@@ -18,24 +18,26 @@
         </div>
 
         <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
-            {# Affichage des véhicules récupérés de la BDD #}
-            {% for vehicle in vehicle_list %}
-                <a href="{{ path('app_show_vehicle', {id:vehicle.id}) }}">
-                <article class="col col-12 mx-1 col-lg-3 mx-3">
-                    <h3 class="text-center">{{ vehicle.vehicleName }}</h3>
-{# ATTENTION je ne suis pas sûr de ce que vais obternir de get(0) #}
-{# ATTENTION je mettrai l'image dans une balise <a href="#"></a> #}
-                    <img src="#" alt="Image annonce">{{ vehicle.images.get(0) }}
-                   {# {{ dump(vehicle_list) }}  #}
-                    <ul class="list-unstyled">
-                        <li>Prix: {{ vehicle.price }} </li>
-                        <li>Kilomètres: {{ vehicle.kilometers }} </li>
-                        {# Récupération date et convertion en chaîne de caractères #}
-                        <li>Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }} </li>
-                    </ul>
-                {{ dump(vehicle) }}
-                </article></a>
-            {% endfor %}
+
+            {% if vehicle_list|length > 0 %}
+                {# Affichage des véhicules récupérés de la BDD #}
+                {% for vehicle in vehicle_list %}
+                    <a href="{{ path('app_show_vehicle', {id:vehicle.id}) }}">
+                    <article class="col col-12 mx-1 col-lg-3 mx-3">
+                        <h3 class="text-center">{{ vehicle.vehicleName }}</h3>
+    {# ATTENTION je mettrai l'image dans une balise <a href="#"></a> #}
+                        <img src="{{ vich_uploader_asset(vehicle) }}" alt="vehicle.name">
+                        <ul class="list-unstyled">
+                            <li><div> Prix: {{ vehicle.price }} </div></li>
+                            <li>Kilomètres: {{ vehicle.kilometers }} </li>
+                            {# Récupération date et convertion en chaîne de caractères #}
+                            <li>Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }} </li>
+                        </ul>
+                     {{ dump(vehicle) }}
+                    </article></a>
+                {% endfor %}
+            {% endif %}
+
         </div>
 
     </main>

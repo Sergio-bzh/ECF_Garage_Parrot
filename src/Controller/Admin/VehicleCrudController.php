@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -23,6 +24,11 @@ class VehicleCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+//      I get here the parameters and avoid hard-setting the basePath
+//      Je récupère ici les paramètres et j'évite de définir en dur le basePath
+        $vichMappingParams = $this->getParameter('vich_uploader.mappings');
+        $vehicleImagePath = $vichMappingParams['vehicles']['uri_prefix'];
+
 //        yield from parent::configureFields($pageName);
         yield IdField::new('id')->hideOnForm();
         yield NumberField::new('kilometers', 'Kilomètrage');
@@ -31,7 +37,9 @@ class VehicleCrudController extends AbstractCrudController
         yield DateField::new('registration_date', 'Mise en circulation');
         yield TextField::new('vehicle_name', 'Nom du véhicule');
 
-//        yield TextareaField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex();
+        yield TextareaField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex();
+//        yield ImageField::new('imageName')->setBasePath('images/vehicles')->hideOnForm();
+        yield ImageField::new('imageName')->setBasePath($vehicleImagePath)->hideOnForm();
 
         yield AssociationField::new('model', 'Modèle');
         yield AssociationField::new('garage');
