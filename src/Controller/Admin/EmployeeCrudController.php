@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Employee;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,7 +21,12 @@ class EmployeeCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield from parent::configureFields(($pageName));
+//        yield from parent::configureFields(($pageName));
+        yield IdField::new('id')->hideOnForm();
+        yield EmailField::new('email', 'Courriel');
+        yield TextField::new('first_name', 'Prénom');
+        yield TextField::new('last_name', 'Nom');
+        yield BooleanField::new('is_admin', 'Admin')->setDisabled();
         yield AssociationField::new('garage');
         /*
         return [

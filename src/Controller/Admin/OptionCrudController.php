@@ -21,9 +21,9 @@ class OptionCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('option_name'),
+            TextField::new('option_name', 'Nom de l\'option'),
             TextEditorField::new('description'),
-            CollectionField::new('vehicles')->hideOnForm(),
+            CollectionField::new('vehicles', 'Véhicule')->hideOnForm(),
         ];
     }
 

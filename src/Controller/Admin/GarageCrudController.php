@@ -23,13 +23,13 @@ class GarageCrudController extends AbstractCrudController
 //        yield from parent::configureFields(($pageName));
         yield NumberField::new('id')
             ->hideOnForm();
-        yield TextField::new('garage_name');
-        yield NumberField::new('street_number');
-        yield TextField::new('street');
-        yield NumberField::new('zip_code');
-        yield TextField::new('city');
-        yield TextField::new('country');
-        yield TextField::new('phone_number');
+        yield TextField::new('garage_name', 'Garage');
+        yield NumberField::new('street_number', 'Numéro');
+        yield TextField::new('street', 'Nom de la rue');
+        yield NumberField::new('zip_code', 'Code postal');
+        yield TextField::new('city', 'Ville');
+        yield TextField::new('country', 'Pays');
+        yield TextField::new('phone_number', 'Téléphone');
         yield AssociationField::new('services');
 
 

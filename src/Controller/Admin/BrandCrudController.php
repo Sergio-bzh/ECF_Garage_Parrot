@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Brand;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -21,8 +22,10 @@ class BrandCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
 
-        yield from parent::configureFields($pageName);
-        yield AssociationField::new('models');
+//        yield from parent::configureFields($pageName);
+        yield IdField::new('id')->hideOnForm();
+        yield TextField::new('brand_name', 'Marque');
+        yield CollectionField::new('models', 'Modèles');
 
         /*
         return [

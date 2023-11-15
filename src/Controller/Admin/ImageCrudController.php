@@ -21,7 +21,8 @@ class ImageCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield from parent::configureFields($pageName);
-        yield AssociationField::new('vehicle');
+        yield TextField::new('title', 'Nom de l\'image');
+        yield AssociationField::new('vehicle', 'Véhicule');
         /*
         return [
             IdField::new('id'),

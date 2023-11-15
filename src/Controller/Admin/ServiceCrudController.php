@@ -26,7 +26,7 @@ class ServiceCrudController extends AbstractCrudController
 //        yield from parent::configureFields(($pageName));
         yield NumberField::new('id')
             ->hideOnForm();
-        yield TextField::new('label');
+        yield TextField::new('label', 'Appellation');
         yield TextField::new('type');
         yield TextareaField::new('description');
         yield AssociationField::new('garages');
