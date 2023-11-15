@@ -26,7 +26,8 @@ class EmployeeCrudController extends AbstractCrudController
         yield EmailField::new('email', 'Courriel');
         yield TextField::new('first_name', 'Prénom');
         yield TextField::new('last_name', 'Nom');
-        yield BooleanField::new('is_admin', 'Admin')->setDisabled();
+        yield TextField::new('password', 'Mot de passe');
+        yield BooleanField::new('is_admin', 'Admin');
         yield AssociationField::new('garage');
         /*
         return [
