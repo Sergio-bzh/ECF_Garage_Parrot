@@ -15,7 +15,7 @@ vich_uploader:
 
         service_image:
             uri_prefix: /images/services
-            upload_destination: '%kernel.project_dir%/assert/images/services'
+            upload_destination: '%kernel.project_dir%/assets/images/services'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false
             delete_on_update: true

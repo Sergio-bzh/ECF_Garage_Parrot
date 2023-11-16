@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Contact;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -34,6 +35,16 @@ class ContactCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('description'),
         ];*/
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+//        return parent::configureCrud($crud);
+        return $crud
+            ->setEntityLabelInPlural('Demande de contact')
+            ->setEntityLabelInSingular('Contact')
+            ->setPageTitle('edit', 'Ajouter une demande de contact')
+            ;
     }
 
 }

@@ -26,6 +26,7 @@ class ServicesService
             if ($service)
             {
                 $serviceData = [
+                    'Nom de l\'image' => $service->getImageName(),
                     'Appelation' => $service->getLabel(),
                     'Type' => $service->getType(),
                     'Description' => $service->getDescription(),
