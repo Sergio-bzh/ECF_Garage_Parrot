@@ -7,7 +7,7 @@ vich_uploader:
     mappings:
         vehicles:
             uri_prefix: /images/vehicles
-            upload_destination: '%kernel.project_dir%/public/images/vehicles'
+            upload_destination: '%kernel.project_dir%/assets/images/vehicles'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
         services:

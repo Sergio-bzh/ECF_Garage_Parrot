@@ -23,7 +23,9 @@
                     <a href="{{ path('app_show_vehicle', {id:vehicle.id} ) }}">
                         <div class="card mb-5" style="width: 22rem;">
                             <h5 class="text-center card-title">{{ vehicle.vehicleName }}</h5>
-                            <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
+                            {#  <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
+                            {#  <img src="{{ path('build'~vich_uploader_asset(vehicle)) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
+                            <img src="{{ asset('build/'~vich_uploader_asset(vehicle)) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
                             <div class="text-center"><span>Cliquez ici</span></div></a>
                             <div class="card-body">
                                 <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
@@ -34,7 +36,6 @@
                                 <p class="card-text">{{ vehicle.description }}</p>
                             </div>
                         </div>
-
                 {% endfor %}
             {% endif %}
         </div>

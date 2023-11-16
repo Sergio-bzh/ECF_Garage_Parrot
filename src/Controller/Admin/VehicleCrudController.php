@@ -38,8 +38,8 @@ class VehicleCrudController extends AbstractCrudController
         yield TextField::new('vehicle_name', 'Nom du véhicule');
 
         yield TextareaField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex();
-//        yield ImageField::new('imageName')->setBasePath('images/vehicles')->hideOnForm();
-        yield ImageField::new('imageName', 'Photo')->setBasePath($vehicleImagePath)->hideOnForm();
+        yield ImageField::new('imageName')->setBasePath('../../assets/images/vehicles')->hideOnForm();
+//        yield ImageField::new('imageName', 'Photo')->setBasePath($vehicleImagePath)->hideOnForm();
 
         yield AssociationField::new('model', 'Modèle');
         yield AssociationField::new('garage');

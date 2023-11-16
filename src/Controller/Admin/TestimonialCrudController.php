@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Testimonial;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -48,11 +49,8 @@ class TestimonialCrudController extends AbstractCrudController
         ];*/
     }
 
-
     public function configureCrud(Crud $crud): Crud
     {
-
-
 //      the labels used to refer to this entity in titles, buttons, etc.
         return $crud
 //            ->setEntityLabelInPlural('Commentaires')
@@ -62,5 +60,4 @@ class TestimonialCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Modifier commentaire')
             ;
     }
-
 }
