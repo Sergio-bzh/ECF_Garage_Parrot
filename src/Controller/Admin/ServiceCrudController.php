@@ -26,6 +26,10 @@ class ServiceCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $vichMappingParams = $this->getParameter('vich_uploader.mappings');
+//        dd($vichMappingParams);
+        $vehicleImagePath = $vichMappingParams['service_image']['uri_prefix'];
+
 //        yield from parent::configureFields(($pageName));
         yield NumberField::new('id')
             ->hideOnForm();
@@ -36,9 +40,9 @@ class ServiceCrudController extends AbstractCrudController
         yield TextareaField::new('imageFile', 'Fichier de l\'image')
             ->setFormType(VichImageType::class)
             ->hideOnIndex();
-        yield ImageField::new('imageName', 'Photo')
-            ->setBasePath('./build/images/services')
-            ->hideOnForm();
+
+        yield ImageField::new('imageName', 'Photo')->setBasePath($vehicleImagePath)->hideOnForm();
+//        yield ImageField::new('imageName', 'Photo')->setBasePath('./images/services')->hideOnForm();
         yield AssociationField::new('garages');
     }
 

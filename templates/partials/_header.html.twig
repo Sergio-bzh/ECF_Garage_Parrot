@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="header container-fluid">
     <header class="d-flex align-items-center justify-content-center justify-content-md-between py-3 border-bottom {{ app.session.flashBag.peek('succcess')|length > 0 ? '': ' mb-4'}}">
         <div class="col-3 col-md-3 mb-2 mb-md-0">
             <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <img src="#" alt="Logo"><!-- ATTENTION il y avait une SVG-->
+                <img class="logo" src="{{ asset('build/images/Logo/logo.jpeg') }}" alt="Logo"><!-- ATTENTION il y avait une SVG-->
             </a>
         </div>
         <div class="col-4">

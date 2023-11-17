@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ServiceRepository;
 use App\Service\ScheduleService;
 use App\Service\ServicesService;
 use App\Service\TestimonialService;
@@ -17,13 +18,14 @@ class HomeController extends AbstractController
         Route('/home', name: 'app_home_alt', methods: 'GET'),
         Route('/accueil', name: 'app_accueil', methods: 'GET')
     ]
-    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService, ServicesService $servicesService): Response
+    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService, ServiceRepository $repo): Response
     {
+        $service_list = $repo->findBy([], ['id' => 'ASC'], 3);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
             'testimonials' => $testimonialService->getLimitedTestimonials(),
-            'services' => $servicesService->getServices()
+            'service_list' => $service_list,
         ]);
     }
 
