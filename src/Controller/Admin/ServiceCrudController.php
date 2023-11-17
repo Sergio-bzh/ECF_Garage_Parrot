@@ -32,10 +32,11 @@ class ServiceCrudController extends AbstractCrudController
         yield TextField::new('label', 'Appellation');
         yield TextField::new('type');
         yield TextareaField::new('description');
-        yield TextareaField::new('imageFile', 'Fichier de l\image')
+
+        yield TextareaField::new('imageFile', 'Fichier de l\'image')
             ->setFormType(VichImageType::class)
             ->hideOnIndex();
-        yield ImageField::new('imageName')
+        yield ImageField::new('imageName', 'Photo')
             ->setBasePath('./build/images/services')
             ->hideOnForm();
         yield AssociationField::new('garages');
