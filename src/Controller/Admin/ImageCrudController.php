@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Image;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -31,4 +32,13 @@ class ImageCrudController extends AbstractCrudController
         ];*/
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+//        return parent::configureCrud($crud);
+        return $crud
+            ->setEntityLabelInPlural('Images')
+            ->setEntityLabelInSingular('Image')
+            ->setPageTitle('new', 'Ajouter image')
+            ->setPageTitle('edit', 'Ajouter image');
+    }
 }
