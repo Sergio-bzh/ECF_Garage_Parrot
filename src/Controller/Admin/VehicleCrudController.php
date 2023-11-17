@@ -28,8 +28,8 @@ class VehicleCrudController extends AbstractCrudController
     {
 //      I had catched here the parameters in order to avoid hard-setting the basePath
 //      J'avais récupèré ici les paramètres et j'évite de définir en dur le basePath
-//        $vichMappingParams = $this->getParameter('vich_uploader.mappings');
-//        $vehicleImagePath = $vichMappingParams['vehicles']['uri_prefix'];
+        $vichMappingParams = $this->getParameter('vich_uploader.mappings');
+        $vehicleImagePath = $vichMappingParams['vehicles']['uri_prefix'];
 
 //        yield from parent::configureFields($pageName);
         yield IdField::new('id')->hideOnForm();
@@ -41,8 +41,8 @@ class VehicleCrudController extends AbstractCrudController
 
         yield TextareaField::new('imageFile', 'Fichier de l\'image')->setFormType(VichImageType::class)->hideOnIndex();
 //        yield ImageField::new('imageName', 'Photo chargée')->setUploadDir('./assets/images/vehicles')->hideOnIndex();
-        yield ImageField::new('imageName', 'Photo')->setBasePath('./build/images/vehicles')->hideOnForm();
-//        yield ImageField::new('imageName', 'Photo')->setBasePath($vehicleImagePath)->hideOnForm();
+//        yield ImageField::new('imageName', 'Photo')->setBasePath('./build/images/vehicles')->hideOnForm();
+        yield ImageField::new('imageName', 'Photo')->setBasePath($vehicleImagePath)->hideOnForm();
 
         yield AssociationField::new('model', 'Modèle');
         yield AssociationField::new('garage');
