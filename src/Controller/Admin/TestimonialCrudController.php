@@ -3,14 +3,18 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Testimonial;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+
 
 class TestimonialCrudController extends AbstractCrudController
 {
@@ -34,7 +38,7 @@ class TestimonialCrudController extends AbstractCrudController
             '4' => '4',
             '5' => '5'
         ])->renderExpanded();
-        yield Field::new('is_approved', 'Validé');
+        yield BooleanField::new('is_approved', 'Validé')->renderAsSwitch();
         yield AssociationField::new('garage', 'Selectionnez le garage');
 
         /*
@@ -45,4 +49,15 @@ class TestimonialCrudController extends AbstractCrudController
         ];*/
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+//      the labels used to refer to this entity in titles, buttons, etc.
+        return $crud
+//            ->setEntityLabelInPlural('Commentaires')
+            ->setEntityLabelInSingular('Commentaire')
+            ->setPageTitle('index', 'Commentaires')
+            ->setPageTitle('new', 'Créer commentaire')
+            ->setPageTitle('edit', 'Modifier commentaire')
+            ;
+    }
 }

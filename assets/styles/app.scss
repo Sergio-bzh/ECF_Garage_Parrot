@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import "shared/custom";
+@import "shared/variables";
+
+@import "bootstrap";
+
+body {
+    background-color: antiquewhite;
+}
+
+.header {
+    background-color: $periferal-color;
+    color: white;
+    .logo {
+        height: 5rem;
+        width: auto;
+        border-radius: 12px;
+    }
+}
+
+.card {
+    background-color: antiquewhite;
+}
+
+.footer {
+    background-color: $periferal-color;
+    color: white;
+}

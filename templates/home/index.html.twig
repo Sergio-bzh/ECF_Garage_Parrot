@@ -4,30 +4,44 @@
 
 {% block body %}
 
-<h2 class="text-center">Services proposés par le garage</h2>
-<div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row-reverse">
+<main>
 
-    {% for service in services %}
-        <div class="lg-align-self-center m-3">
-            <h3>{{ service.Appelation }}</h3>
-            <p><label>Type de service : {{ service.Type }}</label></p>
-            <p>{{ service.Description }}</p>
+    <h2 class="text-center mt-3">Services proposés par le garage</h2>
+    <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-md-row-reverse">
 
-        </div>
-    {% endfor %}
+    {#    {% for service in services %}
+            <div class="md-align-self-center border border-dark-subtle rounded p-3 m-3">
+                 <img src="{{ vich_uploader_asset(service) }}" class="card-img-top" alt="image {{ service.service_image }}">
+                <h3>{{ service.Appelation }}</h3>
+                <p><label>Type de service : {{ service.Type }}</label></p>
+                <p>{{ service.Description }}</p>
 
-</div>
+            </div>
+        {% endfor %} #}
 
-<h2 class="text-center">Commentaires et témoignages</h2>
-<div class="d-flex flex-column-reverse justify-content-evenly">
+        {% if service_list > 0 %}
+            {% for service in service_list %}
+                <div class="md-align-self-center border border-dark-subtle rounded p-3 m-3 col-md-4">
+                    <img src="{{ vich_uploader_asset(service) }}" class="card-img-top" alt="image {{ service.imageName }}">
+                    <h3>{{ service.label }}</h3>
+                    <p><span>Type de Service :</span>{{ service.type }}</p>
+                    <p>{{ service.description }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
 
-        <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
+    </div>
+
+    <h2 class="text-center mb-2">Commentaires et témoignages</h2>
+    <div class="d-flex flex-column-reverse justify-content-evenly">
+
+    <div class="container d-flex flex-column br-1 justify-content-evenly flex-md-row">
         {% for testimonial in testimonials %}
-            <div class="col col-12 mx-1 col-lg-2 mx-3">
+            <div class="col col-11 mt-3 border border-dark-subtle rounded p-2 col-md-4 mx-3 mt-3 mb-4">
                 <ul class="list-unstyled">
                     <li><label>Nom : {{ testimonial.Nom }} </label></li>
                     <li><label>Contenu : {{ testimonial.Contenu }} </label></li>
-{#                     <li><label>Note: {{ testimonial.Note }} </label></li>  #}
+    {#                     <li><label>Note: {{ testimonial.Note }} </label></li>  #}
 
                     <li>Note :
                     {% for i in range(1, 5) %}
@@ -44,9 +58,11 @@
         {% endfor %}
         </div>
 
-        <div class="align-self-center text-end me-3 text-lg-end">
+        <div class="align-self-center text-end me-3 text-md-end">
             <a href="{{ path('app_comments') }}"><button class="btn btn-primary">Voir tout</button></a>
         </div>
 
     </div>
+
+</main>
 {% endblock %}
