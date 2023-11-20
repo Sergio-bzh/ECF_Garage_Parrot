@@ -24,7 +24,7 @@
         </article>
     </div>
 #}
-    <div class="card mb-5" style="width: 22rem;">
+    <div class="card mb-2" style="width: 22rem;">
             <h5 class="text-center card-title">{{ vehicle.vehicleName }}</h5>
         {#  <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
         <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
@@ -39,8 +39,6 @@
         </div>
     </div>
 
-    <div class="gallerie-images">
-        <ul class="list-unstyled  d-flex">
 {#            //Pour Affichage des images qu'il faudra intégrer dans l'action show du contrôleur "VehicleController"
             {% for image in images %}
                 <li>
@@ -50,24 +48,19 @@
                 </li>
             {% endfor %}
 #}
-            <li>
-                <div class="ms-3"><img src="#" alt="image1"></div>
-            </li>
-            <li>
-                <div class="ms-3"><img src="#" alt="image2"></div>
-            </li>
-            <li>
-                <div class="ms-3"><img src="#" alt="image3"></div>
-            </li>
-            <li>
-                <div class="ms-3"><img src="#" alt="image4"></div>
-            </li>
-            <li>
-                <div class="ms-3"><img src="#" alt="image5"></div>
-            </li>
 
-        </ul>
-
+    <div id="carouselExampleSlidesOnly" class="carousel slide m-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active ms-3">
+                <img src="#" class="d-block w-100" alt="image A">
+            </div>
+            <div class="carousel-item ms-3">
+                <img src="#" class="d-block w-100" alt="image B">
+            </div>
+            <div class="carousel-item ms-3">
+                <img src="#" class="d-block w-100" alt="image C">
+            </div>
+        </div>
     </div>
 
 </main>
