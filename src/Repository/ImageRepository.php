@@ -21,6 +21,35 @@ class ImageRepository extends ServiceEntityRepository
         parent::__construct($registry, Image::class);
     }
 
+    // Retourne un tableau d'objets Image selon l'id du véhicule concerné
+    public function findByVehicleId($vehicleId): array
+    {
+        return $this->createQueryBuilder('image')
+            ->where('image.vehicle = :id')
+            ->setParameter('id', $vehicleId)
+            ->orderBy('image.id','ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+/*
+    // La même requête codée différemment
+    public function findByVehicleIdBis($vehicleId): array
+    {
+        $queryBuilder = $this->createQueryBuilder('image');
+            $queryBuilder
+                ->where('image.vehicle = :id')
+                ->setParameter('id', $vehicleId)
+                ->orderBy('image.id','ASC')
+            ->setMaxResults(5);
+        $query = $queryBuilder->getQuery();
+            return $query->getResult();
+    }
+*/
+
+
 //    /**
 //     * @return Image[] Returns an array of Image objects
 //     */
