@@ -55,7 +55,7 @@ A_Lire.md
 .idea/
 /TOOLS/
 /lts_5.4/
-.env
+#.env
 .env.local
 
 ###> symfony/webpack-encore-bundle ###

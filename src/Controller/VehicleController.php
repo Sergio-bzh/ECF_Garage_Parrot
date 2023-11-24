@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Vehicle;
+use App\Repository\ImageRepository;
 use App\Repository\VehicleRepository;
 use App\Service\ScheduleService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,12 +29,16 @@ class VehicleController extends AbstractController
 
 
     #[Route('/vehicles/{id<[0-9]+>}', name: 'app_show_vehicle', methods: 'GET')]
-    public function show_vehicle(ScheduleService $scheduleService, Vehicle $vehicle): Response
+    public function show_vehicle(Request $request, ScheduleService $scheduleService, Vehicle $vehicle, ImageRepository $imageRepo): Response
     {
+        $vehicle->getId();
+        $images = $imageRepo->findByVehicleId($vehicle);
+
         return $this->render('vehicle/show_vehicle.html.twig', [
             'controller_name' => 'VehicleController',
 //            compact('vehicle'),
             'vehicle' => $vehicle,
+            'image_list' => $images,
             'displaySchedules' => $scheduleService->getDisplaySchedules(),
         ]);
     }
