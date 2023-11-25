@@ -70,7 +70,7 @@ class HomeController extends AbstractController
             'displaySchedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
-    */
+
 
     #[Route('/connexion', name: 'app_connection')]
     public function connection(ScheduleService $displaySchedules): Response
@@ -80,4 +80,5 @@ class HomeController extends AbstractController
             'displaySchedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
+    */
 }
