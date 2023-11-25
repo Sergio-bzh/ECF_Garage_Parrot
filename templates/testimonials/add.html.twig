@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un commentaire{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        <h2 class="text-center mt-3 mt-md-4">Laissez un commentaire</h2>
+
+        <div class="col col-10 col-lg-6 mx-auto">
+            {{ form_start(commentForm) }}
+                {{ form_label(commentForm.user_name) }}
+                {{ form_widget(commentForm.user_name) }}
+
+                {{ form_label(commentForm.content) }}
+                {{ form_widget(commentForm.content) }}
+
+                {{ form_label(commentForm.score) }}
+                {{ form_widget(commentForm.score) }}
+
+                {{ form_rest(commentForm) }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mb-3" type="submit">Enregistrer</button>
+                </div>
+            {{ form_end(commentForm) }}
+        </div>
+
+    </main>
+
+{% endblock %}

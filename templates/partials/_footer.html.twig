@@ -1,0 +1,39 @@
+<div class=" footer container-fluid mt-2">
+    <footer class="d-flex flex-column-reverse flex-md-row justify-content-around align-items-center py-3 my-4 border-top">
+        <!-- <div class="none col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+        </div> -->
+        <div>
+            <h2>Horaires</h2>
+            <ul class="list-unstyled">
+                {% for schedule in displaySchedules %}
+                    <li>{{ schedule }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+        </ul>
+        <div class="d-flex flex-column justify-between align-items-center">
+            <div class="px-3 py-4 mb-2 text-center rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                <div>
+                    <span class="text-center">02 37 30 72 05</span>
+                </div>
+            </div>
+
+            <div>
+                <a class="link-light link-underline-opacity-0" href="{{ path('app_contact') }}"><button type="button" class="btn btn-primary me-1 align-self-center">Contactez-nous</button></a>
+            </div>
+        </div>
+    </footer>
+    <div class="text-center mt-0 mb-1"><span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span></div>
+</div>

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    {# SUPPRIMER ci-dessous jusqu'au début de la balise main #}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/sergionunez/ecf_garage_parrot/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
+    </ul>
+</div>
+    <main>
+
+        <div class="col col-10 mx-auto col-lg-6">
+            {{ form_start(contactForm) }}
+
+                {{ form_label(contactForm.last_name) }}
+                {{ form_widget(contactForm.last_name) }}
+
+                {{ form_label(contactForm.first_name) }}
+                {{ form_widget(contactForm.first_name) }}
+
+                {{ form_label(contactForm.email) }}
+                {{ form_widget(contactForm.email) }}
+
+                {{ form_label(contactForm.phone_number) }}
+                {{ form_widget(contactForm.phone_number) }}
+
+                {{ form_label(contactForm.message) }}
+                {{ form_widget(contactForm.message) }}
+
+                {{ form_label(contactForm.garage) }}
+                {{ form_widget(contactForm.garage) }}
+
+                {{ form_rest(contactForm) }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mb-3" type="submit">Enregistrer</button>
+                </div>
+            {{ form_end(contactForm) }}
+        </div>
+
+   </main>
+{% endblock %}

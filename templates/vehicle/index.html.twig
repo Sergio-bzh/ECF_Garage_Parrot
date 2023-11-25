@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des vehicules{% endblock %}
+
+{% block body %}
+    <main>
+
+        <div class="filters text-center">
+            <h2>Filtres</h2>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class=" mx-3">Filtre-1</div>
+                <div class=" mx-3">Filtre-2</div>
+                <div class=" mx-3">Filtre-3</div>
+            </div>
+        </div>
+
+        <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
+            {% if vehicle_list|length > 0 %}
+                {% for vehicle in vehicle_list %}
+                    <a href="{{ path('app_show_vehicle', {id:vehicle.id} ) }}">
+                        <div class="card mb-5" style="width: 22rem;">
+                            <h5 class="text-center card-title">{{ vehicle.vehicleName }}</h5>
+                            {#  <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
+                            {#  <img src="{{ path('build'~vich_uploader_asset(vehicle)) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
+                            <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
+                            <div class="text-center"><span>Cliquez ici</span></div></a>
+
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
+
+                                {# Récupération date et convertion en chaîne de caractères #}
+                                <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }}</h6><br>
+                                <h6 class="card-subtitle mb-2 text-muted">Description:</h6>
+                                <p class="card-text">{{ vehicle.description }}</p>
+                            </div>
+                        </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </main>
+{% endblock %}
