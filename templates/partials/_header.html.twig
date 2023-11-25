@@ -27,9 +27,11 @@
         </ul>
 
         <div class="d-none d-lg-flex justify-content-center align-item-start md-block d-block-md col-md-1 text-end me-1">
-            <!-- <button type="button" class="btn btn-outline-primary me-2">Se connecter</button> -->
-            <a class="link-light link-underline-opacity-0" href="{{ path('app_connection') }}" ><button type="button" class="btn btn-secondary me-1">Connexion</button></a>
-            <!-- <button type="button" class="btn btn-warning ms-1">Déconnection</button> -->
+            {% if not app.user %}
+                <a class="link-light link-underline-opacity-0" href="{{ path('app_login') }}" ><button type="button" class="btn btn-secondary me-1">Connexion</button></a>
+            {% else %}
+                <a class="link-light link-underline-opacity-0" href="{{ path('app_logout') }}" ><button type="button" class="btn btn-warning me-1">Déconnexion</button></a>
+            {% endif %}
         </div>
     </header>
 </div>
