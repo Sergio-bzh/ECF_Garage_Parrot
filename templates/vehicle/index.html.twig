@@ -4,12 +4,9 @@
 
 {% block body %}
     <main>
-        {# SUPPRIMER LIGNE ci-dessous #}
-        <h2 class="text-center">{{ controller_name }}! ✅</h2>
-        <h2 class="text-center">Liste des véhicules</h2>
 
         <div class="filters text-center">
-            <h3>Liste des filtres</h3>
+            <h2>Filtres</h2>
             <div class="d-flex justify-content-center align-items-center">
                 <div class=" mx-3">Filtre-1</div>
                 <div class=" mx-3">Filtre-2</div>
@@ -27,9 +24,11 @@
                             {#  <img src="{{ path('build'~vich_uploader_asset(vehicle)) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">  #}
                             <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
                             <div class="text-center"><span>Cliquez ici</span></div></a>
+
                             <div class="card-body">
                                 <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
                                 <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
+
                                 {# Récupération date et convertion en chaîne de caractères #}
                                 <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }}</h6><br>
                                 <h6 class="card-subtitle mb-2 text-muted">Description:</h6>
