@@ -26,10 +26,11 @@
             <li><a href="{{ path('app_comments') }}" class="nav-link px-2">Commentaires et temoignages</a></li>
         </ul>
 
-        <div class="d-none d-lg-flex justify-content-center align-item-start md-block d-block-md col-md-1 text-end me-1">
+        <div class="d-none d-lg-flex justify-content-center align-item-start md-block d-block-md col-md-2 text-end me-1">
             {% if not app.user %}
                 <a class="link-light link-underline-opacity-0" href="{{ path('app_login') }}" ><button type="button" class="btn btn-secondary me-1">Connexion</button></a>
             {% else %}
+                <a class="link-light link-underline-opacity-0" href="{{ path('admin') }}" ><button type="button" class="btn btn-outline-secondary text-white me-2">Administration</button></a>
                 <a class="link-light link-underline-opacity-0" href="{{ path('app_logout') }}" ><button type="button" class="btn btn-warning me-1">Déconnexion</button></a>
             {% endif %}
         </div>
