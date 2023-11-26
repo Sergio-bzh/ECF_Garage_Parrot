@@ -48,7 +48,7 @@ class EmployeeAuthenticator extends AbstractLoginFormAuthenticator
 //        dd($user);
         $roles = $user->getRoles();
 //        dd($roles);
-        if(!in_array('ROLE_ADMIN', $roles)) {
+        if(!in_array('ROLE_ADMIN', $roles) && !in_array('ROLE_EMPLOYEE', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         }
 

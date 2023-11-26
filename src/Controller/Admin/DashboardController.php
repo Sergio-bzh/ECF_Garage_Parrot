@@ -17,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use http\Client\Curl\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,11 +54,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        $roles = $this->getUser()->getRoles();
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-dashboard');
-        yield MenuItem::linkToCrud('Garage', 'fas fa-home', Garage::class);
-        yield MenuItem::linkToCrud('Horaires', 'fas fa-circle', Schedule::class);
-        yield MenuItem::linkToCrud('Employés', 'fas fa-user', Employee::class);
-        yield MenuItem::linkToCrud('Services', 'fas fa-list', Service::class);
+        if (in_array('ROLE_ADMIN', $roles)){
+            yield MenuItem::linkToCrud('Garage', 'fas fa-square', Garage::class);
+            yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Schedule::class);
+            yield MenuItem::linkToCrud('Employés', 'fas fa-user', Employee::class);
+            yield MenuItem::linkToCrud('Services', 'fas fa-list', Service::class);
+        }
         yield MenuItem::linkToCrud('Marques', 'fas fa-list', Brand::class);
         yield MenuItem::linkToCrud('Modèles', 'fas fa-list', Model::class);
         yield MenuItem::linkToCrud('Véhicules', 'fas fa-car', Vehicle::class);
@@ -66,6 +70,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Témoignages', 'fas fa-pen', Testimonial::class);
         yield MenuItem::linkToCrud('Demandes de contact', 'fas fa-question', Contact::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+//      Options permermettant de revenir à la page d'accueil du site depuis le dashboard en utilisant une route
+//        yield MenuItem::linkToRoute('Retour à l\'accueil', 'fas fa-home','app_accueil',[ 'app_home' => '/']);
+//      Options permermettant de revenir à la page d'accueil du site depuis le dashboard en utilisant une route URL
+        yield MenuItem::linkToUrl('Retour à l\'accueil', 'fas fa-home', '/');
     }
 
     public function configureAssets(): Assets
