@@ -37,7 +37,11 @@ class Contact
         maxMessage: 'Maximum {{ limit }}')]
     private ?string $phone_number = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $subject = null;
+
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
     private ?string $message = null;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]
@@ -92,6 +96,18 @@ class Contact
     public function setPhoneNumber(string $phone_number): static
     {
         $this->phone_number = $phone_number;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?string $subject): static
+    {
+        $this->subject = $subject;
 
         return $this;
     }
