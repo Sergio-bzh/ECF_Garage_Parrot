@@ -16,8 +16,19 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact', methods: 'GET|POST')]
     public function index(ScheduleService $displaySchedules, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $annonce = $request->query->get('Annonce');
+
         // J'instancie un nouvel objet contact
         $contact = new Contact();
+
+//        dd($contact);
+
+        // Je vérifie si Annonce existe et l'affecte au champs Subject du formulaire
+        if ($annonce) {
+           $contact->setSubject($annonce);
+        }
+
+//        dd($contact);
 
         // Je crée le formulaire
         $contactForm = $this->createForm(ContactFormType::class, $contact);

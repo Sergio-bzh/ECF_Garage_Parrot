@@ -21,8 +21,7 @@
 
                 {# Récupération date et convertion en chaîne de caractères #}
                 <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }}</h6><br>
-                <a href="#" class="btn btn-primary">Je prends contact</a>
-
+                <a href="{{ path('app_contact', {'Annonce': vehicle.vehicleName}) }}" class="btn btn-primary">Je prends contact</a>
             </div>
         </div>
     </div>

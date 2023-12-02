@@ -21,7 +21,15 @@
     <main>
 
         <div class="col col-10 mx-auto col-lg-6">
+{#          // J'ajouterai l'affichage du titre de l'article lorsque j'aurai trouvé comment l'intégrér dans le formulaire
+            {% if %}
+            <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ vehicle.vehicleName }} ✅</h2>
+            {% endif %}
+#}
             {{ form_start(contactForm) }}
+
+                {{ form_label(contactForm.subject) }}
+                {{ form_widget(contactForm.subject) }}
 
                 {{ form_label(contactForm.last_name) }}
                 {{ form_widget(contactForm.last_name) }}
