@@ -19,6 +19,18 @@ body {
     }
 }
 
+/*START Sliders styles*/
+.sliders-wrapper{
+    display: flex;
+}
+
+.kilometers-slider, .price-slider, .year-slider {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+/*END Sliders styles*/
+
 .card {
     background-color: antiquewhite;
 }
