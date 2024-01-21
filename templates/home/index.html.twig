@@ -9,21 +9,13 @@
     <h2 class="text-center mt-3">Services proposés par le garage</h2>
     <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-md-row-reverse">
 
-    {#    {% for service in services %}
-            <div class="md-align-self-center border border-dark-subtle rounded p-3 m-3">
-                 <img src="{{ vich_uploader_asset(service) }}" class="card-img-top" alt="image {{ service.service_image }}">
-                <h3>{{ service.Appelation }}</h3>
-                <p><label>Type de service : {{ service.Type }}</label></p>
-                <p>{{ service.Description }}</p>
-
-            </div>
-        {% endfor %} #}
-
         {% if service_list > 0 %}
             {% for service in service_list %}
                 <div class="md-align-self-center border border-dark-subtle rounded p-3 m-3 col-md-4">
-                    <img src="{{ vich_uploader_asset(service) }}" class="card-img-top" alt="image {{ service.imageName }}">
-                    <h3>{{ service.label }}</h3>
+                    <div class="home-img">
+                        <img src="{{ vich_uploader_asset(service) }}" class="card-img-top" alt="image {{ service.imageName }}">
+                    </div>
+                    <h3 class="mt-2">{{ service.label }}</h3>
                     <p><span>Type de Service :</span>{{ service.type }}</p>
                     <p>{{ service.description }}</p>
                 </div>
