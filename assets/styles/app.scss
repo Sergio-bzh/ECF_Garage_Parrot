@@ -19,6 +19,23 @@ body {
     }
 }
 
+.home-img img{
+    max-height: 234px;
+    object-fit: cover;
+}
+
+.vehicle-list-img img{
+    max-height: 240px;
+    object-fit: cover;
+    padding: 1%;
+    border-radius: 5%;
+}
+
+.carousel-item img{
+    max-width: 300px;
+    object-fit: cover;
+}
+
 .card {
     background-color: antiquewhite;
 }
