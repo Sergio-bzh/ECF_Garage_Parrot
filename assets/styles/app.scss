@@ -4,6 +4,8 @@
 
 @import "bootstrap";
 
+@import "sliders";
+
 body {
     background-color: antiquewhite;
     max-width: 100%;
@@ -38,6 +40,10 @@ body {
 
 .card {
     background-color: antiquewhite;
+}
+
+.card:hover{
+    box-shadow: 0 0 3px 1px #888;
 }
 
 .footer {
