@@ -26,10 +26,10 @@
     </div>
 
     <div class="carousel slide m-3" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner"  style="width: 250px">
             {% if vehicle.vehicleName %}
                 {% for image in image_list %}
-                    <div class="carousel-item active ms-3">
+                    <div class="carousel-item active ms-3" style="width: 250px">
                         <img src="{{ vich_uploader_asset(image) }}" class="d-block w-75" alt="image {{ image.imageName }}" loading="lazy">
                     </div>
                 {% endfor %}

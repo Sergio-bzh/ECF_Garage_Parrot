@@ -5,13 +5,8 @@
 {% block body %}
     <main>
 
-        <div class="filters text-center">
-            <h2>Filtres</h2>
-            <div class="d-flex justify-content-center align-items-center">
-                <div class=" mx-3">Filtre-1</div>
-                <div class=" mx-3">Filtre-2</div>
-                <div class=" mx-3">Filtre-3</div>
-            </div>
+        <div class="filters text-center mt-2">
+                {% include('partials/_slider.html.twig') %}
         </div>
 
         <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
