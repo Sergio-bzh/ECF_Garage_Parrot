@@ -8,12 +8,13 @@
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
 
+// Import sliders JS file
+import './js/sliders.js';
+
 import {Tooltip, Toast, Popover} from "bootstrap";
 import 'bootstrap';
 require('bootstrap/dist/js/bootstrap.bundle');
 
-// Import sliders JS file
-import './js/sliders.js';
 
 // The code here below makes all pics in images folder to be used in twig templates
 const imagesContext = require.context('./images', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
