@@ -6,7 +6,51 @@
 
 <main class="d-flex flex-column align-items-center">
 
-    <div class="container col-xxl-8 px-4 py-5">
+    {# Page avec les détails du véhicule et le carroussel au format mobile #}
+    <div class="container col-xxl-8 px-4 py-5 d-lg-none">
+        <div class="row flex-lg-row align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                {# Mise en place du carroussel mobile #}
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="width: 250px"> {#  image principale  #}
+                            <img src="{{ vich_uploader_asset(vehicle) }}" class="d-block mx-lg-auto img-fluid" alt="image {{ vehicle.vehicleName }}" width="700" height="500" loading="lazy">
+                        </div>
+                        {#  Boucle forEach des images  #}
+                        {% if vehicle.vehicleName %}
+                            {% for image in image_list %}
+                                <div class="carousel-item" style="width: 300px">
+                                    <img src="{{ vich_uploader_asset(image) }}" class="d-block w-75" alt="image {{ image.imageName }}" loading="lazy">
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ vehicle.vehicleName }} ✅</h2>
+                <h6 class="card-subtitle lead mb-2 text-muted">Description:</h6>
+                <p class="card-text lead">{{ vehicle.description }}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
+                <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
+
+                {# Récupération date et convertion en chaîne de caractères #}
+                <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('Y') }}</h6><br>
+                <a href="{{ path('app_contact', {'Annonce': vehicle.vehicleName}) }}" class="btn btn-primary">Je prends contact</a>
+            </div>
+        </div>
+    </div>
+
+    {# Page avec les détails du véhicule et le carroussel au format desktop #}
+    <div class="d-none d-lg-block container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="{{ vich_uploader_asset(vehicle) }}" class="d-block mx-lg-auto img-fluid" alt="image {{ vehicle.vehicleName }}" width="700" height="500" loading="lazy">
@@ -19,13 +63,13 @@
                 <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
 
                 {# Récupération date et convertion en chaîne de caractères #}
-                <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('d-m-Y') }}</h6><br>
+                <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('Y') }}</h6><br>
                 <a href="{{ path('app_contact', {'Annonce': vehicle.vehicleName}) }}" class="btn btn-primary">Je prends contact</a>
             </div>
         </div>
     </div>
 
-    <div class="carousel slide m-3" data-bs-ride="carousel">
+    <div class="d-none d-lg-block carousel slide m-3" data-bs-ride="carousel">
         <div class="carousel-inner"  style="width: 250px">
             {% if vehicle.vehicleName %}
                 {% for image in image_list %}
