@@ -110,7 +110,7 @@ class Image
         return $this->imageSize;
     }
 
-    public function getUpdatedAt (): DateTimeImmutable|null
+    public function getUpdatedAt (): \DateTimeImmutable|null
     {
         return $this->updatedAt;
     }
