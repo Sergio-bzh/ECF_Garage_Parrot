@@ -26,7 +26,10 @@ class TestimonialService
         $extractedTestimonials = $testimonialsRepo->findBy([], ['score' => 'DESC']);
         $testimonialList = [];
 
-        $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 3, 4 );
+
+//      Je génère un nombre un nombre aléatoire servant de offset pour la page d'accueil
+        $offset = rand(0, count($extractedTestimonials));
+        $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 3, $offset );
         $limitedList = array();
 
 //      Génération de tous les temoignages
