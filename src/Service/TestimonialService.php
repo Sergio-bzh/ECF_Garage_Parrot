@@ -43,12 +43,7 @@ class TestimonialService
                 $testimonialList[] = $testimonialData;
             }
         }
-        if (empty($testimonialList))
-        {
-            $this->testimonials[] = 'Il n\'y a pas de commentaire pour l\'instant';
-        } else {
-            $this->testimonials = $testimonialList;
-        }
+        $this->testimonials = $testimonialList;
 
 //      Génération des temoignages avec limite de 3
         foreach ($limitedTestimonials as $testimonial)
@@ -63,11 +58,6 @@ class TestimonialService
                 $limitedList[] = $testimonialData;
             }
         }
-        if (empty($limitedList))
-        {
-            $this->limitedTestimonials[] = 'Il n\'y a pas de commentaire pour l\'instant (donc pas de filtre)';
-        } else {
-            $this->limitedTestimonials = $limitedList;
-        }
+        $this->limitedTestimonials = $limitedList;
     }
 }

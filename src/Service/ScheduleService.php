@@ -37,7 +37,9 @@ class ScheduleService
         }
 
         foreach ($this->daysOfWeek as $index => $day) {
-            $this->displaySchedules[] = "$day : $morning[$index] <=> $afternoon[$index]";
+            if(isset($morning[$index]) && isset($afternoon[$index])){
+                $this->displaySchedules[] = "$day : $morning[$index] <=> $afternoon[$index]";
+            }
         }
     }
 }
