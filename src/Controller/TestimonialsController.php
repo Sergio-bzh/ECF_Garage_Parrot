@@ -26,7 +26,7 @@ class TestimonialsController extends AbstractController
         $page = $request->query->getInt('page', 1);
 
 //      Je récupère tous les commentaires
-        $commentsList = $testimonialRepository->findTestimonialsPaginated($page, 2);
+        $commentsList = $testimonialRepository->findTestimonialsPaginated($page, 6);
 
 //        dd($commentsList['data'][0]);
 
@@ -34,12 +34,12 @@ class TestimonialsController extends AbstractController
             'controller_name' => 'TestimonialsController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
 //            'testimonials' => $testimonialService->getTestimonials(),
-            'testimonials' => $commentsList
+            'testimonials' => $commentsList['data']
         ]);
     }
 /*
     #[Route('/commentaires', name: 'app_comments')]
-    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService):Response
+    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialServicesponse
     {
         return $this->render('testimonials/index.html.twig', [
             'controller_name' => 'HomeController',
