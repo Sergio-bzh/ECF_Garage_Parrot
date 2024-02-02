@@ -7,13 +7,13 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class TestimonialService
 {
-    private array $testimonials;
+//    private array $testimonials;
     private array $limitedTestimonials;
 
-    public function getTestimonials(): array
-    {
-        return $this->testimonials;
-    }
+//    public function getTestimonials(): array
+//    {
+//        return $this->testimonials;
+//    }
 
     public function getLimitedTestimonials(): array
     {
@@ -32,8 +32,8 @@ class TestimonialService
         $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 3, $offset );
         $limitedList = array();
 
-//      Génération de tous les temoignages
-        foreach ($extractedTestimonials as $index => $testimonial)
+//      Génération de tous les temoignages pour la page dédiée
+/*        foreach ($extractedTestimonials as $index => $testimonial)
         {
             if($testimonial->isIsApproved())
             {
@@ -47,8 +47,9 @@ class TestimonialService
             }
         }
         $this->testimonials = $testimonialList;
+*/
 
-//      Génération des temoignages avec limite de 3
+//      Génération des temoignages avec limite de 3 pour la page d'accueil
         foreach ($limitedTestimonials as $testimonial)
         {
             if ($testimonial->isIsApproved())

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Testimonial;
 use App\Form\TestimonialFormType;
+use App\Repository\TestimonialRepository;
 use App\Service\ScheduleService;
 use App\Service\TestimonialService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,12 +19,22 @@ class TestimonialsController extends AbstractController
         Route('/testimonials', name: 'app_testimonials', methods: 'GET'),
         Route('/commentaires', name: 'app_comments', methods: 'GET')
     ]
-    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService): Response
+    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService,
+                          TestimonialRepository $testimonialRepository, Request $request): Response
     {
+//      Je récupère le numéro de page dans l'URL et s'il n'y a pas de numéro de page dans l'URL je mets la première par défaut
+        $page = $request->query->getInt('page', 1);
+
+//      Je récupère tous les commentaires
+        $commentsList = $testimonialRepository->findTestimonialsPaginated($page, 2);
+
+//        dd($commentsList['data'][0]);
+
         return $this->render('testimonials/index.html.twig', [
             'controller_name' => 'TestimonialsController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials(),
+//            'testimonials' => $testimonialService->getTestimonials(),
+            'testimonials' => $commentsList
         ]);
     }
 /*
