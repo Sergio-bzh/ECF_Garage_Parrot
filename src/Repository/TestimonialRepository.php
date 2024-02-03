@@ -38,7 +38,9 @@ class TestimonialRepository extends ServiceEntityRepository
         $data = $paginator->getQuery()->getResult();
 
 //      Je vérifie si la variable $data est vide et si oui, je retourne le tableau (vide bien sûr)
+//      Je fais de même pour le sous tableau $data utilisé par le TestimonialService
         if(empty($data)){
+            $result['data'] = [];
             return $result;
         }
 

@@ -15,13 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TestimonialsController extends AbstractController
 {
-    #[
-        Route('/testimonials', name: 'app_testimonials', methods: 'GET'),
-        Route('/commentaires', name: 'app_comments', methods: 'GET')
+/*    #[
+            Route('/testimonials', name: 'app_testimonials', methods: 'GET'),
+            Route('/commentaires', name: 'app_comments', methods: 'GET')
     ]
     public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService,
                           TestimonialRepository $testimonialRepository, Request $request): Response
     {
+
+
 //      Je récupère le numéro de page dans l'URL et s'il n'y a pas de numéro de page dans l'URL je mets la première par défaut
         $page = $request->query->getInt('page', 1);
 
@@ -37,17 +39,17 @@ class TestimonialsController extends AbstractController
             'testimonials' => $commentsList['data']
         ]);
     }
-/*
-    #[Route('/commentaires', name: 'app_comments')]
-    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialServicesponse
+*/
+    #[Route('/commentaires/{page}', name: 'app_comments')]
+    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService, int $page): Response
     {
         return $this->render('testimonials/index.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials(),
+            'testimonials' => $testimonialService->getTestimonials($page, 6)['data'],
         ]);
     }
-*/
+
     #[
         Route('/add_testimonial', name:'app_add_testimonial', methods: 'GET|POST'),
         Route('/ajouter_temoignage', name:'app_add_temoignage', methods: 'GET|POST'),
