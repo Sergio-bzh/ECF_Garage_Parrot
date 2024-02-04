@@ -22,7 +22,7 @@ class TestimonialRepository extends ServiceEntityRepository
         parent::__construct($registry, Testimonial::class);
     }
 
-    public function findTestimonialsPaginated(int $page, int $limit = 4): array
+    public function findTestimonialsPaginated(int $page, int $limit): array
     {
         $limit = abs($limit);
 
@@ -38,11 +38,12 @@ class TestimonialRepository extends ServiceEntityRepository
         $data = $paginator->getQuery()->getResult();
 
 //      Je vérifie si la variable $data est vide et si oui, je retourne le tableau (vide bien sûr)
-        if(empty($data)){
+        if(empty($data))
+        {
             return $result;
         }
 
-// Je déclare une variable ($pages) pour stocker le nombre des pages de commentaires calculées
+// Je déclare une variable ($pages) pour stocker le nombre des pages de commentaires présents en BDD
         $pages = ceil($paginator->count() / $limit);
 
         $result['data']     = $data;
@@ -50,8 +51,6 @@ class TestimonialRepository extends ServiceEntityRepository
         $result['page']     = $page;
         $result['limit']    = $limit;
 
-
-//dd($query->getQuery()->getResult());
         return $result;
     }
 
