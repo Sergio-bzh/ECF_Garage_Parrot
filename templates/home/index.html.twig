@@ -33,7 +33,6 @@
                 <ul class="list-unstyled">
                     <li><label>Nom : {{ testimonial.Nom }} </label></li>
                     <li><label>Contenu : {{ testimonial.Contenu }} </label></li>
-    {#                     <li><label>Note: {{ testimonial.Note }} </label></li>  #}
 
                     <li>Note :
                     {% for i in range(1, 5) %}
@@ -51,7 +50,8 @@
         </div>
 
         <div class="align-self-center text-end me-3 text-md-end">
-            <a href="{{ path('app_comments') }}"><button class="btn btn-primary">Voir tout</button></a>
+{# Mise en place du numéro de page pour que le bouton "voir tous les commentaires pointe vers la première page des commentaires"#}
+            <a href="{{ path('app_comments', {page: 1}) }}"><button class="btn btn-primary">Voir tout</button></a>
         </div>
 
     </div>

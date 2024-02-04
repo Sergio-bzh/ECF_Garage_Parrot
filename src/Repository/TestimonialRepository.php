@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Testimonial;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,6 +20,38 @@ class TestimonialRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Testimonial::class);
+    }
+
+    public function findTestimonialsPaginated(int $page, int $limit): array
+    {
+        $limit = abs($limit);
+
+        $result = [];
+
+        $query= $this->getEntityManager()->createQueryBuilder()
+            ->select('testimonials')
+            ->from('App\Entity\Testimonial', 'testimonials')
+            ->setMaxResults($limit)
+            ->setFirstResult(($page * $limit) - $limit);
+
+        $paginator = new Paginator($query);
+        $data = $paginator->getQuery()->getResult();
+
+//      Je vérifie si la variable $data est vide et si oui, je retourne le tableau (vide bien sûr)
+        if(empty($data))
+        {
+            return $result;
+        }
+
+// Je déclare une variable ($pages) pour stocker le nombre des pages de commentaires présents en BDD
+        $pages = ceil($paginator->count() / $limit);
+
+        $result['data']     = $data;
+        $result['pages']    = $pages;
+        $result['page']     = $page;
+        $result['limit']    = $limit;
+
+        return $result;
     }
 
 //    /**

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Testimonial;
 use App\Form\TestimonialFormType;
+use App\Repository\TestimonialRepository;
 use App\Service\ScheduleService;
 use App\Service\TestimonialService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,29 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TestimonialsController extends AbstractController
 {
-    #[
-        Route('/testimonials', name: 'app_testimonials', methods: 'GET'),
-        Route('/commentaires', name: 'app_comments', methods: 'GET')
-    ]
-    public function index(ScheduleService $displaySchedules, TestimonialService $testimonialService): Response
-    {
-        return $this->render('testimonials/index.html.twig', [
-            'controller_name' => 'TestimonialsController',
-            'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials(),
-        ]);
-    }
-/*
-    #[Route('/commentaires', name: 'app_comments')]
-    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService):Response
+    #[Route('/commentaires/{page}', name: 'app_comments')]
+    public function comments(ScheduleService $displaySchedules, TestimonialService $testimonialService, $page = 1, $limit = 6): Response
     {
         return $this->render('testimonials/index.html.twig', [
             'controller_name' => 'HomeController',
             'displaySchedules' => $displaySchedules->getDisplaySchedules(),
-            'testimonials' => $testimonialService->getTestimonials(),
+            'testimonials' => $testimonialService->getTestimonials($page, $limit),
         ]);
     }
-*/
+
     #[
         Route('/add_testimonial', name:'app_add_testimonial', methods: 'GET|POST'),
         Route('/ajouter_temoignage', name:'app_add_temoignage', methods: 'GET|POST'),
@@ -65,7 +53,6 @@ class TestimonialsController extends AbstractController
 
             // Je redigige vers la page d'accueil
             return $this->redirectToRoute('app_home');
-
         }
 
         return $this->render('testimonials/add.html.twig', [

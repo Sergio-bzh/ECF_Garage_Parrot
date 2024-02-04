@@ -11,19 +11,19 @@
 
         <div class="me-md-5 d-lg-none dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Navigation
             </button>
             <ul class="dropdown-menu">
                 <li><a href="{{ path('app_home') }}"><button class="dropdown-item" type="button">Accueil</button></a></li>
                 <li><a href="{{ path('app_vehicles_list') }}"><button class="dropdown-item" type="button">Liste des véhicules</button></a></li>
-                <li><a href="{{ path('app_comments') }}"><button class="dropdown-item" type="button">Commentaires et temoignages</button></a></li>
+                <li><a href="{{ path('app_comments', {page:1}) }}"><button class="dropdown-item" type="button">Commentaires et temoignages</button></a></li>
             </ul>
         </div>
 
         <ul class="d-none d-lg-inline-flex nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 me-2">
             <li><a href="{{ path('app_home') }}" class="nav-link px-2">Accueil</a></li>
             <li><a href="{{ path('app_vehicles_list') }}" class="nav-link px-2">Liste des véhicules</a></li>
-            <li><a href="{{ path('app_comments') }}" class="nav-link px-2">Commentaires et temoignages</a></li>
+            <li><a href="{{ path('app_comments', {page:1}) }}" class="nav-link px-2">Commentaires et temoignages</a></li>
         </ul>
 
         <div class="d-none d-lg-flex justify-content-center align-item-start md-block d-block-md col-md-2 text-end me-1">

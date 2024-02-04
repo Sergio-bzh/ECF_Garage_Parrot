@@ -1,0 +1,31 @@
+{% if testimonials.pages > 1 %}
+    <nav>
+        <ul class="pagination  m-5">
+            {% if testimonials.page > 1 %}
+                <li class="page-item">
+                    <a href="{{ path(path,{page: testimonials.page - 1}) }}" class="page-link">&lt</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link">&lt</a>
+                </li>
+            {% endif %}
+
+            {% for page in 1..testimonials.pages %}
+                <li class="page-item  {{ (page == testimonials.page) ? 'active': '' }} ">
+                    <a href="{{ path(path, {page: page}) }}" class="page-link">{{page}}</a>
+                </li>
+            {% endfor %}
+
+            {% if testimonials.page < testimonials.pages %}
+                <li class="page-item">
+                    <a href="{{ path(path,{page: testimonials.page + 1}) }}" class="page-link">&gt</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link">&gt</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
