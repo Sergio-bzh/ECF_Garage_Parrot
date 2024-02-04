@@ -22,6 +22,8 @@ class VehicleRepository extends ServiceEntityRepository
         parent::__construct($registry, Vehicle::class);
     }
 
+    // Je me suis inspiré de la fonction de recherche que j'ai faite dans le "TestimonialRepository"
+    // Je ne suis pas sur de pouvoir refactoriser sur les fonctions des Repos
     public function findVehiclesPaginated(int $page, int $limit): array
     {
         $limit = abs($limit);
