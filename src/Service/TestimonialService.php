@@ -27,13 +27,11 @@ class TestimonialService
         $this->testimonialRepo = $testimonialRepo;
         $testimonialsRepo = $entityManager->getRepository(Testimonial::class);
         $extractedTestimonials = $testimonialsRepo->findBy([], ['score' => 'DESC']);
-        $testimonialList = [];
 
 //      Je génère un nombre un nombre aléatoire servant de offset pour la page d'accueil
         $offset = rand(0, count($extractedTestimonials));
         $limitedTestimonials = $testimonialsRepo->findBy([], ['content' => 'ASC'], 3, $offset );
         $limitedList = array();
-
 
 //      Génération des temoignages avec limite de 3 pour la page d'accueil
         foreach ($limitedTestimonials as $testimonial)
