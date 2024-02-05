@@ -15,14 +15,14 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="{{ path('app_home') }}"><button class="dropdown-item" type="button">Accueil</button></a></li>
-                <li><a href="{{ path('app_vehicles_list') }}"><button class="dropdown-item" type="button">Liste des véhicules</button></a></li>
+                <li><a href="{{ path('app_vehicles_list', {page:1}) }}"><button class="dropdown-item" type="button">Liste des véhicules</button></a></li>
                 <li><a href="{{ path('app_comments', {page:1}) }}"><button class="dropdown-item" type="button">Commentaires et temoignages</button></a></li>
             </ul>
         </div>
 
         <ul class="d-none d-lg-inline-flex nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 me-2">
             <li><a href="{{ path('app_home') }}" class="nav-link px-2">Accueil</a></li>
-            <li><a href="{{ path('app_vehicles_list') }}" class="nav-link px-2">Liste des véhicules</a></li>
+            <li><a href="{{ path('app_vehicles_list', {page:1}) }}" class="nav-link px-2">Liste des véhicules</a></li>
             <li><a href="{{ path('app_comments', {page:1}) }}" class="nav-link px-2">Commentaires et temoignages</a></li>
         </ul>
 
