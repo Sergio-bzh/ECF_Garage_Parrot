@@ -17,29 +17,25 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VehicleController extends AbstractController
 {
-    #[Route('/vehicles', name: 'app_vehicles_list', methods: 'GET')]
-    public function index(ScheduleService $scheduleService, VehicleRepository $vehicleRepository): Response
+    #[Route('/vehicles/{page}', name: 'app_vehicles_list', methods: 'GET')]
+    public function index(ScheduleService $scheduleService, VehicleRepository $vehicleRepository, int $page): Response
     {
         $vehicle_list = $vehicleRepository->findBy([], ['id' => 'DESC']);
+        $vehicle_paginated = $vehicleRepository->findVehiclesPaginated($page, $limit = 6);
 
         return $this->render('vehicle/index.html.twig', [
-            'controller_name' => 'VehicleController',
             'vehicle_list' => $vehicle_list,
-            'displaySchedules' => $scheduleService->getDisplaySchedules(),
+            'vehicle_paginated' => $vehicle_paginated,
+            'displaySchedules' => $scheduleService->getDisplaySchedules()
         ]);
     }
 
-
-
-    #[Route('/vehicles/{id<[0-9]+>}', name: 'app_show_vehicle', methods: 'GET')]
+    #[Route('/vehicle/{id<[0-9]+>}', name: 'app_show_vehicle', methods: 'GET')]
     public function show_vehicle(Request $request, ScheduleService $scheduleService, Vehicle $vehicle, ImageRepository $imageRepo): Response
     {
-//        $vehicle->getId();
         $images = $imageRepo->findByVehicleId($vehicle);
 
         return $this->render('vehicle/show_vehicle.html.twig', [
-            'controller_name' => 'VehicleController',
-//            compact('vehicle'),
             'vehicle' => $vehicle,
             'image_list' => $images,
             'displaySchedules' => $scheduleService->getDisplaySchedules(),
@@ -63,12 +59,10 @@ class VehicleController extends AbstractController
         }
 
         return $this->render('contact/index.html.twig',[
-            'controller_name' => 'app_select_vehicle',
             'vehicle' => $vehicle,
             'subject' => $contact,
             'contactForm' => $contactForm->createView(),
             'displayShedules' => $displaySchedules->getDisplaySchedules()
         ]);
     }
-
 }
