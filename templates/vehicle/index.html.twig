@@ -9,28 +9,65 @@
                 {% include('partials/_slider.html.twig') %}
         </div>
 
-        <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-lg-row">
-            {% if vehicle_list|length > 0 %}
-                {% for vehicle in vehicle_list %}
-                    <a href="{{ path('app_show_vehicle', {id:vehicle.id} ) }}">
-                        <div class="card my-3 mx-1"  style="width: 22rem;">
+        <div class="container d-flex flex-column flex-md-wrap br-1 justify-content-evenly mt-3 flex-lg-row">
+            {% if vehicle_paginated|length > 0 %}
+                {% for vehicle in vehicle_paginated.data %}
+                    <div class="card my-3 mx-1"  style="width: 22rem;">
+                        <a href="{{ path('app_show_vehicle', {id:vehicle.id} ) }}">
                             <h5 class="text-center card-title">{{ vehicle.vehicleName }}</h5>
                             <div class="vehicle-list-img">
                                 <img src="{{ vich_uploader_asset(vehicle) }}" class="card-img-top" alt="image {{ vehicle.vehicleName }}">
                             </div>
-                            <div class="text-center"><span>Cliquez ici</span></div></a>
+                            <div class="text-center"><span>Cliquez ici</span></div>
+                        </a>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
 
-                            <div class="card-body">
-                                <h6 class="card-subtitle mb-2 text-muted">Prix: {{ vehicle.price }} </h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Kilomètres: {{ vehicle.kilometers }} </h6>
-
-                                {# Récupération date et convertion en chaîne de caractères #}
-                                <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('Y') }}</h6><br>
-                            </div>
+                            {# Récupération date et convertion en chaîne de caractères pour récupérer juste l'année de mise en circulation #}
+                            <h6 class="card-subtitle mb-2 text-muted">Mise en circulation: {{ vehicle.registrationDate|date('Y') }}</h6><br>
                         </div>
+                    </div>
+
                 {% endfor %}
             {% endif %}
         </div>
+
+        {% set path = 'app_vehicles_list' %}
+        {% set pages = 'vehicle_paginated.pages' %}
+        {% set currentPage = 'vehicle_paginated.page' %}
+
+        {% if vehicle_paginated.pages > 1 %}
+            <nav>
+                <ul class="pagination  m-5">
+                    {% if vehicle_paginated.page > 1 %}
+                        <li class="page-item">
+                            <a href="{{ path(path,{page: vehicle_paginated.page - 1}) }}" class="page-link">&lt</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&lt</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page in 1..vehicle_paginated.pages %}
+                        <li class="page-item  {{ (page == vehicle_paginated.page) ? 'active': '' }} ">
+                            <a href="{{ path(path, {page: page}) }}" class="page-link">{{page}}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if vehicle_paginated.page < vehicle_paginated.pages %}
+                        <li class="page-item">
+                            <a href="{{ path(path,{page: vehicle_paginated.page + 1}) }}" class="page-link">&gt</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&gt</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
 
     </main>
 {% endblock %}

@@ -22,8 +22,8 @@ class VehicleRepository extends ServiceEntityRepository
         parent::__construct($registry, Vehicle::class);
     }
 
-    // Je me suis inspiré de la fonction de recherche que j'ai faite dans le "TestimonialRepository"
-    // Je ne suis pas sur de pouvoir refactoriser sur les fonctions des Repos
+// Je me suis inspiré de la fonction de recherche que j'ai faite dans le "TestimonialRepository"
+// Je verrai par la suite s'il est possible refactoriser
     public function findVehiclesPaginated(int $page, int $limit): array
     {
         $limit = abs($limit);
@@ -38,12 +38,15 @@ class VehicleRepository extends ServiceEntityRepository
 
         $paginator = new Paginator($query);
         $data = $paginator->getQuery()->getResult();
-
+//      Je vérifie si la variable $data est vide et si oui, je retourne le tableau
         if(empty($data))
         {
+            $result['data'] = [];
+            $result['pages'] = [];
+            $result['page'] = null ;
             return $result;
         }
-
+// Je déclare une variable ($pages) pour stocker le nombre des pages de commentaires présents en BDD
         $pages = ceil($paginator->count() / $limit);
 
         $result['data']     = $data;
