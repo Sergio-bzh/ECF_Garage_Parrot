@@ -18,10 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class VehicleController extends AbstractController
 {
     #[Route('/vehicles/{page}', name: 'app_vehicles_list', methods: 'GET')]
-    public function index(ScheduleService $scheduleService, VehicleRepository $vehicleRepository, int $page): Response
+    public function index(ScheduleService $scheduleService, VehicleRepository $vehicleRepository, $page = 1): Response
     {
-        $vehicle_list = $vehicleRepository->findBy([], ['id' => 'DESC']);
-        $vehicle_paginated = $vehicleRepository->findVehiclesPaginated($page, $limit = 6);
+        $limit = 6;
+        $vehicle_list = $vehicleRepository->findBy([], ['id' => 'ASC']);
+        $vehicle_paginated = $vehicleRepository->findVehiclesPaginated($page, $limit);
 
         return $this->render('vehicle/index.html.twig', [
             'vehicle_list' => $vehicle_list,
