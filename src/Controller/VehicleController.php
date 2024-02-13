@@ -11,6 +11,7 @@ use App\Service\ScheduleService;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,5 +66,35 @@ class VehicleController extends AbstractController
             'contactForm' => $contactForm->createView(),
             'displayShedules' => $displaySchedules->getDisplaySchedules()
         ]);
+    }
+
+    #[Route('/filteredVehicle/{minKm}/{maxKm}/{minPrice}/{maxPrice}/{minYear}/{maxYear}', name: 'app_filtered', methods: 'GET')]
+    public function filteredVehicle(int $minKm = null, int $maxKm = null, int $minPrice = null, int $maxPrice = null,
+                                    int $minYear = null, int $maxYear = null, VehicleRepository $vehicleRepository): JsonResponse
+    {
+        // Que faire si valeur null ? ==> Définir des seuils
+        $seuilMinKm = 10000;
+        $seuilMaxKm = 120000;
+        $seuilMinPrice = 2000;
+        $seuilMaxPrice = 22000;
+        $seuilMinYear = 2013;
+        $seuilMaxYear = 2023;
+
+        is_null($minKm) || $minKm < $seuilMinKm ? $minKm = $seuilMinKm : $minKm;
+        is_null($maxKm) || $maxKm > $seuilMaxKm ? $maxKm = $seuilMaxKm : $maxKm;
+        is_null($minPrice) || $minPrice < $seuilMinPrice ? $minPrice = $seuilMinPrice : $minPrice;
+        is_null($maxPrice) || $maxPrice > $seuilMaxPrice ? $maxPrice = $seuilMaxPrice : $maxPrice;
+        is_null($minYear) || $minYear < $seuilMinYear ? $minYear = $seuilMinYear : $minYear;
+        is_null($maxYear) || $maxYear > $seuilMaxYear ? $maxYear = $seuilMaxYear : $maxYear;
+
+        $vehicleList = $vehicleRepository->findFiltredVehicles($minKm, $maxKm, $minPrice, $maxPrice, $minYear, $maxYear);
+
+        $arrayOfVehicles = [];
+        foreach ($vehicleList as $vehicle) {
+
+            $arrayOfVehicles[] = ['id' => $vehicle->getId(), 'nom' => $vehicle->getVehicleName(), 'image' => $vehicle->getImageName(),
+                'price' => $vehicle->getPrice(), 'kilomètres' => $vehicle->getKilometers(), 'Mise en circulation' => $vehicle->getRegistrationDate()];
+        }
+        return $this->json($arrayOfVehicles);
     }
 }

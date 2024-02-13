@@ -6,6 +6,7 @@ use App\Entity\Vehicle;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @extends ServiceEntityRepository<Vehicle>
@@ -55,6 +56,28 @@ class VehicleRepository extends ServiceEntityRepository
         $result['limit']    = $limit;
 
         return $result;
+    }
+
+    public function findFiltredVehicles(int $minKm = null, int $maxKm = null, int $minPrice = null, int $maxPrice = null, int $minYear = null, int $maxYear = null): ?array
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('filtredVehicles')
+            ->from('App\Entity\Vehicle', 'filtredVehicles');
+        if($minKm || $maxKm || $minPrice || $maxPrice || $minYear || $maxYear){
+            $query->andWhere('filtredVehicles.kilometers > :minKm')
+                ->setParameter('minKm', $minKm);
+            $query->andWhere('filtredVehicles.kilometers > :maxKm')
+                ->setParameter('maxKm', $maxKm);
+            $query->andWhere('filtredVehicles.price > :minPrice')
+                ->setParameter('minPrice', $minPrice);
+            $query->andWhere('filtredVehicles.price > :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
+            $query->andWhere('filtredVehicles.price > :minYear')
+                ->setParameter('minYear', $minYear);
+            $query->andWhere('filtredVehicles.price > :maxYear')
+                ->setParameter('maxYear', $maxYear);
+        }
+        return $query->getQuery()->getResult();
     }
 
 //    /**
