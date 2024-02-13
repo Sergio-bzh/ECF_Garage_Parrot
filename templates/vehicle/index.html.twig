@@ -7,6 +7,8 @@
 
         <div class="filters text-center mt-2">
                 {% include('partials/_slider.html.twig') %}
+            {# Bouton servant à déclencher la requête AJAX #}
+            <button id="filter" type="button" class="filter-button btn btn-primary my-2 me-1 align-self-center">Filtrer</button>
         </div>
 
         <div class="container d-flex flex-column flex-md-wrap br-1 justify-content-evenly mt-3 flex-lg-row">
