@@ -11,7 +11,7 @@
             <button id="filter" type="button" class="filter-button btn btn-primary my-2 me-1 align-self-center">Filtrer</button>
         </div>
 
-        <div class="container d-flex flex-column flex-md-wrap br-1 justify-content-evenly mt-3 flex-lg-row">
+        <div class="container js-container d-flex flex-column flex-md-wrap br-1 justify-content-evenly mt-3 flex-lg-row">
             {% if vehicle_paginated|length > 0 %}
                 {% for vehicle in vehicle_paginated.data %}
                     <div class="card my-3 mx-1"  style="width: 22rem;">

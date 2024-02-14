@@ -93,7 +93,7 @@ class VehicleController extends AbstractController
         foreach ($vehicleList as $vehicle) {
 
             $arrayOfVehicles[] = ['id' => $vehicle->getId(), 'nom' => $vehicle->getVehicleName(), 'image' => $vehicle->getImageName(),
-                'price' => $vehicle->getPrice(), 'kilomètres' => $vehicle->getKilometers(), 'Mise en circulation' => $vehicle->getRegistrationDate()];
+                'price' => $vehicle->getPrice(), 'kilometers' => $vehicle->getKilometers(), 'year' => $vehicle->getRegistrationDate()];
         }
         return $this->json($arrayOfVehicles);
     }
