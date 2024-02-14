@@ -6,6 +6,7 @@ use App\Entity\Vehicle;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @extends ServiceEntityRepository<Vehicle>
@@ -56,6 +57,37 @@ class VehicleRepository extends ServiceEntityRepository
 
         return $result;
     }
+
+    public function findFiltredVehicles(int $minKm = null, int $maxKm = null, int $minPrice = null, int $maxPrice = null, int $minYear = null, int $maxYear = null): ?array
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('filtredVehicles')
+            ->from('App\Entity\Vehicle', 'filtredVehicles');
+        if($minKm || $maxKm || $minPrice || $maxPrice || $minYear || $maxYear){
+            $query->andWhere('filtredVehicles.kilometers >= :minKm')
+                ->setParameter('minKm', $minKm);
+            $query->andWhere('filtredVehicles.kilometers <= :maxKm')
+                ->setParameter('maxKm', $maxKm);
+            $query->andWhere('filtredVehicles.price >= :minPrice')
+                ->setParameter('minPrice', $minPrice);
+            $query->andWhere('filtredVehicles.price <= :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
+            $query->andWhere('filtredVehicles.registration_date >= :minYear')
+                ->setParameter('minYear', $minYear.'-01-01');
+            $query->andWhere('filtredVehicles.registration_date <= :maxYear')
+                ->setParameter('maxYear', $maxYear.'-12-31');
+        }
+        return $query->getQuery()->getResult();
+    }
+
+//    public function findMinMax(): ?array
+//    {
+//        $query = $this->getEntityManager()->createQueryBuilder()
+//            ->select('min(vehicle.kilometers) as minKm, max(vehicle.kilometers) as maxKm')
+//            ->from('Vehicle', 'vehicles')
+//            ;
+//        return $query->getQuery()->getResult();
+//    }
 
 //    /**
 //     * @return Vehicle[] Returns an array of Vehicle objects

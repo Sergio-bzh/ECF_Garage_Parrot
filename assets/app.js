@@ -11,6 +11,12 @@ import './styles/app.scss';
 // Import sliders JS file
 import './js/sliders.js';
 
+// Import filter JS file
+import './js/filter.js';
+
+// Import axios JS file
+import './js/axiosTest.js';
+
 import {Tooltip, Toast, Popover} from "bootstrap";
 import 'bootstrap';
 require('bootstrap/dist/js/bootstrap.bundle');

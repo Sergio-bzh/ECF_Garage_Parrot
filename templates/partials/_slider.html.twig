@@ -14,9 +14,12 @@
             </div>
         </div>
 
+{#         {% set bornes.minKm = 'bornes.minKm' %}  #}
+{#         {% set bornes.maxKm = 'bornes.maxKm' %}  #}
+
         <div class="min-max-range">
-            <input type="range" min="10000" step="1000" max="50000" value="0" class="range" id="min-km">
-            <input type="range" min="51000" step="1000" max="150000" value="150000" class="range" id="max-km">
+            <input type="range" min="10000" step="1000" max="59999" value="10000" class="range" id="min-km">
+            <input type="range" min="60000" step="1000" max="120000" value="120000" class="range" id="max-km">
         </div>
 
     </div>
@@ -36,8 +39,8 @@
         </div>
 
         <div class="min-max-range">
-            <input type="range" min="1000" step="500" max="20000" value="0" class="range" id="min-price">
-            <input type="range" min="20500" step="500" max="40000" value="40000" class="range" id="max-price">
+            <input type="range" min="2000" step="500" max="12000" value="2000" class="range" id="min-price">
+            <input type="range" min="12000" step="500" max="22000" value="22000" class="range" id="max-price">
         </div>
 
     </div>
@@ -57,7 +60,7 @@
         </div>
 
         <div class="min-max-range">
-            <input type="range" min="2010" max="2017" value="2010" class="range" id="min-year">
+            <input type="range" min="2013" max="2018" value="2013" class="range" id="min-year">
             <input type="range" min="2018" max="2024" value="2024" class="range" id="max-year">
         </div>
 
