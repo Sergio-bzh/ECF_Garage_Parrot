@@ -64,21 +64,30 @@ class VehicleRepository extends ServiceEntityRepository
             ->select('filtredVehicles')
             ->from('App\Entity\Vehicle', 'filtredVehicles');
         if($minKm || $maxKm || $minPrice || $maxPrice || $minYear || $maxYear){
-            $query->andWhere('filtredVehicles.kilometers > :minKm')
+            $query->andWhere('filtredVehicles.kilometers >= :minKm')
                 ->setParameter('minKm', $minKm);
-            $query->andWhere('filtredVehicles.kilometers > :maxKm')
+            $query->andWhere('filtredVehicles.kilometers <= :maxKm')
                 ->setParameter('maxKm', $maxKm);
-            $query->andWhere('filtredVehicles.price > :minPrice')
+            $query->andWhere('filtredVehicles.price >= :minPrice')
                 ->setParameter('minPrice', $minPrice);
-            $query->andWhere('filtredVehicles.price > :maxPrice')
+            $query->andWhere('filtredVehicles.price <= :maxPrice')
                 ->setParameter('maxPrice', $maxPrice);
-            $query->andWhere('filtredVehicles.price > :minYear')
-                ->setParameter('minYear', $minYear);
-            $query->andWhere('filtredVehicles.price > :maxYear')
-                ->setParameter('maxYear', $maxYear);
+            $query->andWhere('filtredVehicles.registration_date >= :minYear')
+                ->setParameter('minYear', $minYear.'-01-01');
+            $query->andWhere('filtredVehicles.registration_date <= :maxYear')
+                ->setParameter('maxYear', $maxYear.'-12-31');
         }
         return $query->getQuery()->getResult();
     }
+
+//    public function findMinMax(): ?array
+//    {
+//        $query = $this->getEntityManager()->createQueryBuilder()
+//            ->select('min(vehicle.kilometers) as minKm, max(vehicle.kilometers) as maxKm')
+//            ->from('Vehicle', 'vehicles')
+//            ;
+//        return $query->getQuery()->getResult();
+//    }
 
 //    /**
 //     * @return Vehicle[] Returns an array of Vehicle objects

@@ -24,10 +24,12 @@ class VehicleController extends AbstractController
         $limit = 6;
         $vehicle_list = $vehicleRepository->findBy([], ['id' => 'ASC']);
         $vehicle_paginated = $vehicleRepository->findVehiclesPaginated($page, $limit);
+//        $bornes = $vehicleRepository->findMinMax();
 
         return $this->render('vehicle/index.html.twig', [
             'vehicle_list' => $vehicle_list,
             'vehicle_paginated' => $vehicle_paginated,
+//            'bornes' => $bornes,
             'displaySchedules' => $scheduleService->getDisplaySchedules()
         ]);
     }
@@ -80,12 +82,12 @@ class VehicleController extends AbstractController
         $seuilMinYear = 2013;
         $seuilMaxYear = 2023;
 
-        is_null($minKm) || $minKm < $seuilMinKm ? $minKm = $seuilMinKm : $minKm;
-        is_null($maxKm) || $maxKm > $seuilMaxKm ? $maxKm = $seuilMaxKm : $maxKm;
-        is_null($minPrice) || $minPrice < $seuilMinPrice ? $minPrice = $seuilMinPrice : $minPrice;
-        is_null($maxPrice) || $maxPrice > $seuilMaxPrice ? $maxPrice = $seuilMaxPrice : $maxPrice;
-        is_null($minYear) || $minYear < $seuilMinYear ? $minYear = $seuilMinYear : $minYear;
-        is_null($maxYear) || $maxYear > $seuilMaxYear ? $maxYear = $seuilMaxYear : $maxYear;
+        $minKm = is_null($minKm) || $minKm < $seuilMinKm ? $seuilMinKm : $minKm;
+        $maxKm = is_null($maxKm) || $maxKm > $seuilMaxKm ? $seuilMaxKm : $maxKm;
+        $minPrice = is_null($minPrice) || $minPrice < $seuilMinPrice ? $seuilMinPrice : $minPrice;
+        $maxPrice = is_null($maxPrice) || $maxPrice > $seuilMaxPrice ? $seuilMaxPrice : $maxPrice;
+        $minYear = is_null($minYear) || $minYear < $seuilMinYear ? $seuilMinYear : $minYear;
+        $maxYear = is_null($maxYear) || $maxYear > $seuilMaxYear ? $seuilMaxYear : $maxYear;
 
         $vehicleList = $vehicleRepository->findFiltredVehicles($minKm, $maxKm, $minPrice, $maxPrice, $minYear, $maxYear);
 
