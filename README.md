@@ -9,7 +9,7 @@ Le projet Garage Parrot a été fait dans le cadre de mon Evaluation en Cours de
 - IDE (PHPStorm ou autre) ou Editeur de texte avancé (par éxemple VSCode)
 - NodeJS
   - yarn ou nmp
-- SGBD**R** (J'ai utilisé MySQL mais vous pouvez utiliser MariaDB, PostgreSQL ou tout autre)
+- SGBD**R** (J'ai utilisé MySQL mais vous pouvez utiliser MariaDB)
 
 ## Pour installer ce projet en local :
 ### Rappatrier le projet depuis le dépôt distant:
@@ -40,5 +40,11 @@ ou
 ### Lancez le serveur serveur Web et Yarn watch (ENV=dev)
 - symfony console serve:start
 - yarn watch
-
-#### _Merci pour l'intérêt que vous prêtez à ce projet_
+### Vous pouvez utiliser ce projet avec les comptes présents dans le jeu de données
+- Compte admin :
+  - Login : admin@garage-parrot.com
+  - Mot de passe : Studi2023!
+- Compte employé : 
+  - Login : employee@garage-parrot.com
+  - Mot de passe : password
+#### _Merci pour l'intérêt que vous prêtez à mon projet_

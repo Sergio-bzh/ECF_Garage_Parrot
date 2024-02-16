@@ -116,7 +116,7 @@ CREATE TABLE `employee` (
   UNIQUE KEY `UNIQ_5D9F75A1E7927C74` (`email`),
   KEY `IDX_5D9F75A1C4FFF555` (`garage_id`),
   CONSTRAINT `FK_5D9F75A1C4FFF555` FOREIGN KEY (`garage_id`) REFERENCES `garage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,1,'sergio.nunez@studi.fr','[\"ROLE_ADMIN\"]','$2y$13$F6h8s8oMCi90MmthiXxP9Of3hj4SzatFz/8u5FVuUFJHNfXKMXTjG','Sergio','NUNEZ',1),(12,1,'test.admin@email.com','[\"ROLE_EMPLOYEE\"]','$2y$13$yDkngGk7Yn5gh0.ciqH3zePFjDk9MX2P9vqaN4QR7xQplYKDwBcz6','test','admin',1),(13,1,'marion@studi.fr','[]','$2y$13$ltDnPsab4Wb/dPpyz6BJIeXX0hr.ff1msUqwjGOjQRR9IunB7SRqG','Marion','MAURICE',0),(14,1,'admin@email.com','[\"ROLE_ADMIN\"]','$2y$13$y.6amMszUMIIF8sRcuFP6eDPMEaFShlxD9KUT9191Dv0d3eF2s9eK','ad','min',1),(15,1,'pascal@email.com','[]','$2y$13$IhAhZNj7z79G0fNrB0pedu2qNMtKgVOyETv5vKgqsmMJ6I.7UzleK','Pascal','Mon petit fils',0),(16,1,'clement@email.com','[]','$2y$13$maNdA8zhZxYCm9jYWmiuFOLBdqdBX4Ikz.clHPx.IDsOQLWkTyfTi','Clément','Voisin',0);
+INSERT INTO `employee` VALUES (17,1,'admin@garage-parrot.com','[\"ROLE_ADMIN\"]','$2y$13$SqqdE1ElomD5dbvo..U.muyskMcHFuNQ8Ufd8oLuu1BaX4OGf4MKi','ad','min',1),(18,1,'employee@garage-parrot.com','[\"ROLE_EMPLOYEE\", \"ROLE_USER\"]','$2y$13$Wux5OgzKIvCNLQwoErRjSuNAr3imGbQKgG25fZfK4nfTKVdfP/v2G','emplo','yee',0);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,4 +436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-15 18:32:58
+-- Dump completed on 2024-02-16 19:31:44
