@@ -6,9 +6,12 @@ use App\Entity\Employee;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -59,7 +62,7 @@ class EmployeeCrudController extends AbstractCrudController
         yield TextField::new('first_name', 'Prénom');
         yield TextField::new('last_name', 'Nom');
         yield TextField::new('password', 'Mot de passe');
-        yield BooleanField::new('is_admin', 'Admin');
+        yield ArrayField::new('roles', 'Rôles');
         yield AssociationField::new('garage');
         /*
         return [
