@@ -21,14 +21,10 @@ class ContactController extends AbstractController
         // J'instancie un nouvel objet contact
         $contact = new Contact();
 
-//        dd($contact);
-
         // Je vérifie si Annonce existe et l'affecte au champs Subject du formulaire
         if ($annonce) {
            $contact->setSubject($annonce);
         }
-
-//        dd($contact);
 
         // Je crée le formulaire
         $contactForm = $this->createForm(ContactFormType::class, $contact);

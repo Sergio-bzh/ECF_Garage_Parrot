@@ -24,7 +24,6 @@ class VehicleRepository extends ServiceEntityRepository
     }
 
 // Je me suis inspiré de la fonction de recherche que j'ai faite dans le "TestimonialRepository"
-// Je verrai par la suite s'il est possible refactoriser
     public function findVehiclesPaginated(int $page, int $limit): array
     {
         $limit = abs($limit);
@@ -58,6 +57,7 @@ class VehicleRepository extends ServiceEntityRepository
         return $result;
     }
 
+// J'ai créé cette fonction pour gérer les appel AJAX
     public function findFiltredVehicles(int $minKm = null, int $maxKm = null, int $minPrice = null, int $maxPrice = null, int $minYear = null, int $maxYear = null): ?array
     {
         $query = $this->getEntityManager()->createQueryBuilder()
