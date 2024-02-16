@@ -17,7 +17,6 @@ class OptionCrudController extends AbstractCrudController
         return Option::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [

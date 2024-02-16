@@ -49,5 +49,4 @@ class ContactCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Ajouter une demande de contact')
             ;
     }
-
 }

@@ -12,7 +12,6 @@ class SecurityController extends AbstractController
 {
     #[
         Route(path: '/login', name: 'app_login'),
-//        Route(path: '/connexion', name: 'app_connection')
     ]
     public function login(AuthenticationUtils $authenticationUtils, ScheduleService $scheduleService): Response
     {
@@ -22,11 +21,9 @@ class SecurityController extends AbstractController
              return $this->redirectToRoute('admin');
          }
 
-//        // dd($scheduleService);
-
-        // get the login error if there is one
+        // Je récupère l'erreur de login s'il y en a eu
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // Dernier "username" entré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
@@ -37,7 +34,6 @@ class SecurityController extends AbstractController
 
     #[
         Route(path: '/logout', name: 'app_logout'),
-//        Route(path: '/deconnexion', name: 'app_deconnexion')
     ]
     public function logout(): void
     {

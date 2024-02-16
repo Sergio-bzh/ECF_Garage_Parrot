@@ -44,11 +44,8 @@ class EmployeeAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-//        $user = $token->getUser();
-//        dd($user);
-//        $roles = $user->getRoles();
         $roles = $token->getUser()->getRoles();
-//        dd($roles);
+
         if(!in_array('ROLE_ADMIN', $roles) && !in_array('ROLE_EMPLOYEE', $roles)) {
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
         }
@@ -58,8 +55,8 @@ class EmployeeAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('admin'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('admin'));
     }
 
     protected function getLoginUrl(Request $request): string

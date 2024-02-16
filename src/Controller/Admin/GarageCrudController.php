@@ -6,9 +6,7 @@ use App\Entity\Garage;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class GarageCrudController extends AbstractCrudController
@@ -32,7 +30,6 @@ class GarageCrudController extends AbstractCrudController
         yield TextField::new('country', 'Pays');
         yield TextField::new('phone_number', 'Téléphone');
         yield AssociationField::new('services');
-
 
         /*
         return [

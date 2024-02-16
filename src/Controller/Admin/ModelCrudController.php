@@ -9,7 +9,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ModelCrudController extends AbstractCrudController
@@ -19,12 +18,10 @@ class ModelCrudController extends AbstractCrudController
         return Model::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
 //        yield from parent::configureFields($pageName);
 //        yield AssociationField::new('brand');
-
 
         return [
             IdField::new('id')->hideOnForm(),
@@ -34,7 +31,6 @@ class ModelCrudController extends AbstractCrudController
             TextField::new('motorization', 'Motorisation'),
             NumberField::new('horse_power', 'Nbre de chevaux'),
             AssociationField::new('brand', 'Marque'),
-//            TextEditorField::new('description'),
         ];
     }
 

@@ -9,7 +9,6 @@ use App\Repository\ImageRepository;
 use App\Repository\VehicleRepository;
 use App\Service\ScheduleService;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

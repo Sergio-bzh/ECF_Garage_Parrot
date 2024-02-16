@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Testimonial;
 use App\Form\TestimonialFormType;
-use App\Repository\TestimonialRepository;
 use App\Service\ScheduleService;
 use App\Service\TestimonialService;
 use Doctrine\ORM\EntityManagerInterface;

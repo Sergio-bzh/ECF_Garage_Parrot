@@ -46,8 +46,6 @@ class TestimonialFormType extends AbstractType
                     '5' => '5',
                 ]])
 
-//            ->add('is_approved')
-
             ->add('garage', EntityType::class,options:[
                 'class' => Garage::class,
                 'attr' => [
