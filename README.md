@@ -1,5 +1,6 @@
 # ECF_Garage_Parrot
-Le projet Garage Parrot a été fait dans le cadre de mon Evaluation en Cours de Formation.
+J'ai réalisé ce projet dans le cadre de mon Evaluation en Cours de Formation et vous trouverez le tableau ayant servi à son organisation et suivi ci-après : 
+## - _[Trello du projet](https://trello.com/b/hfWvDwmv/ecfgarageparrot)_
 
 ## Pré-requis pour utiliser ce projet sur votre poste:
 - GIT
