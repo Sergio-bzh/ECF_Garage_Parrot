@@ -16,25 +16,26 @@
 
             <div class="container d-flex flex-column br-1 justify-content-evenly mt-3 flex-md-row flex-wrap">
                 {% for testimonial in testimonials.data %}
-                    <article class="col col-12 mx-auto my-1 border border-dark rounded p-1 col-md-3 ms-1 my-md-4">
-                        <ul class="list-unstyled">
+                    {% if testimonial.isIsApproved %}
+                        <article class="col col-12 mx-auto my-1 border border-dark rounded p-1 col-md-3 ms-1 my-md-4">
+                            <ul class="list-unstyled">
 
-                            <li><label>Nom : {{  testimonial.userName }} </label></li>
-                            <li><label>Contenu : {{ testimonial.content }} </label></li>
-                            {# <li><label>Note: {{ testimonial.Note }} </label></li> #}
+                                <li><label>Nom : {{  testimonial.userName }} </label></li>
+                                <li><label>Contenu : {{ testimonial.content }} </label></li>
+                                {# <li><label>Note: {{ testimonial.Note }} </label></li> #}
 
-                            <li>Note :
-                                {% for i in range(1, 5) %}
-                                    {% if (loop.index <= testimonial.Score) %}
-                                        <span class="active text-secondary">&starf;</span>
-                                    {% else %}
-                                        <span class="active"> </span>
-                                    {% endif %}
-                                {% endfor %}
-                            </li>
-
-                        </ul>
-                    </article> <br>
+                                <li>Note :
+                                    {% for i in range(1, 5) %}
+                                        {% if (loop.index <= testimonial.Score) %}
+                                            <span class="active text-secondary">&starf;</span>
+                                        {% else %}
+                                            <span class="active"> </span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </article>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
