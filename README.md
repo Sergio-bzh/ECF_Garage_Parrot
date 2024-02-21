@@ -36,6 +36,7 @@ ou
   - **symfony console doctrine:migrations:migrate**
 - Importer le jeu de données du fichier .sql qui se trouve dans le sous-dossier "SQL" du dossier "annexes" avec :
   - **mysql -u root -p nom_de_votre_bdd < annexes/SQL/jeu_de_donnees.sql**
+  - _ATTENTIION ! : Si vous utilisez un outil graphiphique tel que MySQLWorkbench pensez à selectionner la base des donnés cible avant de lancer le script MySQL ci-dessus_
 #### _Si vous le souhaitez, vous pouvez peupler manuellement votre base des données_
 
 ### Lancez le serveur serveur Web et Yarn watch (ENV=dev)
